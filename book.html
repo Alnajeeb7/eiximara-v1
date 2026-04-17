@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Book your project with EIXIMARA - Premium portfolio websites and custom software solutions.">
+  <meta name="theme-color" content="#F2FAF6">
+  <title>Book a Project - EIXIMARA</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="book">
+    <!-- ═══════════════════════════════════════════════════
+         HEADER
+         ═══════════════════════════════════════════════════ -->
+    <header class="book__header">
+      <div class="book__header-inner">
+        <a href="index.html" class="nav__logo text-gradient font-display">EIXIMARA</a>
+        <a href="index.html" class="btn btn--ghost btn--sm">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back to home
+        </a>
+      </div>
+    </header>
+
+    <!-- ═══════════════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════════════ -->
+    <main class="book__content">
+      <!-- Progress Bar -->
+      <div class="book__progress" id="progress">
+        <div class="book__progress-header">
+          <span class="book__progress-text font-mono">Step <span id="current-step">1</span> of 4</span>
+          <span class="book__progress-text font-mono"><span id="progress-percent">25</span>%</span>
+        </div>
+        <div class="book__progress-bar">
+          <div class="book__progress-fill" id="progress-fill" style="width: 25%"></div>
+        </div>
+      </div>
+
+      <!-- Step 1: Project Type -->
+      <div class="book__step" id="step-1">
+        <h1 class="book__step-title font-display">What would you like to build?</h1>
+        <p class="book__step-description">Select the type of project that best describes what you need.</p>
+        
+        <div class="book__options">
+          <button type="button" class="book__option" data-field="projectType" data-value="portfolio">
+            <div>
+              <div class="book__option-label">Portfolio Website</div>
+              <div class="book__option-description">Showcase your work and skills</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+          
+          <button type="button" class="book__option" data-field="projectType" data-value="software">
+            <div>
+              <div class="book__option-label">Custom Software</div>
+              <div class="book__option-description">Web apps, tools, and platforms</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+          
+          <button type="button" class="book__option" data-field="projectType" data-value="branding">
+            <div>
+              <div class="book__option-label">Personal Branding</div>
+              <div class="book__option-description">Complete digital identity</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+          
+          <button type="button" class="book__option" data-field="projectType" data-value="other">
+            <div>
+              <div class="book__option-label">Something Else</div>
+              <div class="book__option-description">Tell us what you need</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Budget -->
+      <div class="book__step" id="step-2" style="display: none;">
+        <h1 class="book__step-title font-display">What&apos;s your budget range?</h1>
+        <p class="book__step-description">This helps us understand the scope and recommend the best approach.</p>
+        
+        <div class="book__options">
+          <button type="button" class="book__option" data-field="budget" data-value="starter">
+            <div>
+              <div class="book__option-label">$500 - $1,000</div>
+              <div class="book__option-description">Basic portfolio or landing page</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+          
+          <button type="button" class="book__option" data-field="budget" data-value="standard">
+            <div>
+              <div class="book__option-label">$1,000 - $2,500</div>
+              <div class="book__option-description">Full portfolio with custom features</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+          
+          <button type="button" class="book__option" data-field="budget" data-value="premium">
+            <div>
+              <div class="book__option-label">$2,500 - $5,000</div>
+              <div class="book__option-description">Complex software or full branding</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+          
+          <button type="button" class="book__option" data-field="budget" data-value="enterprise">
+            <div>
+              <div class="book__option-label">$5,000+</div>
+              <div class="book__option-description">Large-scale projects</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Timeline -->
+      <div class="book__step" id="step-3" style="display: none;">
+        <h1 class="book__step-title font-display">When do you need it?</h1>
+        <p class="book__step-description">Choose a timeline that works for you. Faster delivery is available with a premium.</p>
+        
+        <div class="book__options">
+          <button type="button" class="book__option" data-field="timeline" data-value="express">
+            <div>
+              <div class="book__option-label">Express (1-3 days)</div>
+              <div class="book__option-description">+50% rush fee</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+          
+          <button type="button" class="book__option" data-field="timeline" data-value="priority">
+            <div>
+              <div class="book__option-label">Priority (1 week)</div>
+              <div class="book__option-description">+25% priority fee</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+          
+          <button type="button" class="book__option" data-field="timeline" data-value="standard">
+            <div>
+              <div class="book__option-label">Standard (2 weeks)</div>
+              <div class="book__option-description">Regular pricing</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+          
+          <button type="button" class="book__option" data-field="timeline" data-value="flexible">
+            <div>
+              <div class="book__option-label">Flexible (3+ weeks)</div>
+              <div class="book__option-description">10% discount</div>
+            </div>
+            <div class="book__option-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 4: Contact Details -->
+      <div class="book__step" id="step-4" style="display: none;">
+        <h1 class="book__step-title font-display">Tell us about yourself</h1>
+        <p class="book__step-description">Share your details so we can get in touch and discuss your project.</p>
+        
+        <form id="contact-form">
+          <div class="book__form-grid book__form-grid--2col">
+            <div class="book__field">
+              <label for="name" class="label">Full name <span class="label__required">*</span></label>
+              <input type="text" id="name" name="name" class="input input--lg" placeholder="John Doe" required>
+            </div>
+            <div class="book__field">
+              <label for="email" class="label">Email address <span class="label__required">*</span></label>
+              <input type="email" id="email" name="email" class="input input--lg" placeholder="john@example.com" required>
+            </div>
+          </div>
+          
+          <div class="book__form-grid book__form-grid--2col" style="margin-top: 1.5rem;">
+            <div class="book__field">
+              <label for="phone" class="label">Phone number</label>
+              <input type="tel" id="phone" name="phone" class="input input--lg" placeholder="+91 98765 43210">
+            </div>
+            <div class="book__field">
+              <label for="company" class="label">Company / Organization</label>
+              <input type="text" id="company" name="company" class="input input--lg" placeholder="Your company name">
+            </div>
+          </div>
+          
+          <div class="book__field" style="margin-top: 1.5rem;">
+            <label for="description" class="label">Project description</label>
+            <textarea id="description" name="description" class="textarea" placeholder="Tell us more about your project, goals, and any specific requirements..."></textarea>
+          </div>
+        </form>
+      </div>
+
+      <!-- Step 5: Success -->
+      <div class="book__step" id="step-5" style="display: none;">
+        <div class="book__success">
+          <div class="book__success-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          
+          <h1 class="book__success-title font-display">Request submitted!</h1>
+          <p class="book__success-description">
+            Thank you for your interest. We&apos;ll review your project details and get back to you within 24 hours.
+          </p>
+          
+          <div class="book__success-cta">
+            <a href="index.html" class="btn btn--primary btn--lg hover-glow">
+              Back to home
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+          </div>
+          
+          <div class="book__success-contact">
+            <p class="book__success-contact-label">Or reach out directly:</p>
+            <div class="book__success-contact-links">
+              <a href="mailto:hello@eiximara.com" class="book__success-contact-link">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <span class="font-mono">hello@eiximara.com</span>
+              </a>
+              <a href="tel:+919876543210" class="book__success-contact-link">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+                <span class="font-mono">+91 98765 43210</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="book__nav" id="nav-buttons">
+        <button type="button" class="btn btn--ghost" id="back-btn" disabled>
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back
+        </button>
+        
+        <button type="button" class="btn btn--primary hover-glow" id="continue-btn" disabled>
+          Continue
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="main.js"></script>
+  
+  <!-- Book Page Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      'use strict';
+      
+      // Check authentication
+      if (!API.isLoggedIn()) {
+        window.location.href = 'auth.html?redirect=book.html';
+        return;
+      }
+      
+      const user = API.getUser();
+      
+      // State
+      let currentStep = 1;
+      const totalSteps = 4;
+      const formData = {
+        projectType: '',
+        budget: '',
+        timeline: '',
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        description: ''
+      };
+      
+      // DOM Elements
+      const progressEl = document.getElementById('progress');
+      const currentStepEl = document.getElementById('current-step');
+      const progressPercentEl = document.getElementById('progress-percent');
+      const progressFillEl = document.getElementById('progress-fill');
+      const backBtn = document.getElementById('back-btn');
+      const continueBtn = document.getElementById('continue-btn');
+      const navButtons = document.getElementById('nav-buttons');
+      const steps = {
+        1: document.getElementById('step-1'),
+        2: document.getElementById('step-2'),
+        3: document.getElementById('step-3'),
+        4: document.getElementById('step-4'),
+        5: document.getElementById('step-5')
+      };
+      
+      // Form inputs
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const phoneInput = document.getElementById('phone');
+      const companyInput = document.getElementById('company');
+      const descriptionInput = document.getElementById('description');
+      
+      // Option buttons
+      const allOptions = document.querySelectorAll('.book__option');
+      
+      // Initialize
+      if (user) {
+        formData.name = (user.firstName + ' ' + (user.lastName || '')).trim();
+        formData.email = user.email || '';
+        
+        if (nameInput) nameInput.value = formData.name;
+        if (emailInput) emailInput.value = formData.email;
+      }
+      
+      updateUI();
+      
+      // Option click handlers
+      allOptions.forEach(function(option) {
+        option.addEventListener('click', function() {
+          const field = this.dataset.field;
+          const value = this.dataset.value;
+          
+          // Update form data
+          formData[field] = value;
+          
+          // Update selected state
+          const siblings = this.parentElement.querySelectorAll('.book__option');
+          siblings.forEach(function(sib) {
+            sib.classList.remove('book__option--selected');
+          });
+          this.classList.add('book__option--selected');
+          
+          // Enable continue button
+          updateUI();
+        });
+      });
+      
+      // Form input handlers
+      if (nameInput) {
+        nameInput.addEventListener('input', function() {
+          formData.name = this.value;
+          updateUI();
+        });
+      }
+      
+      if (emailInput) {
+        emailInput.addEventListener('input', function() {
+          formData.email = this.value;
+          updateUI();
+        });
+      }
+      
+      if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+          formData.phone = this.value;
+        });
+      }
+      
+      if (companyInput) {
+        companyInput.addEventListener('input', function() {
+          formData.company = this.value;
+        });
+      }
+      
+      if (descriptionInput) {
+        descriptionInput.addEventListener('input', function() {
+          formData.description = this.value;
+        });
+      }
+      
+      // Navigation handlers
+      backBtn.addEventListener('click', function() {
+        if (currentStep > 1) {
+          currentStep--;
+          showStep(currentStep);
+          updateUI();
+        }
+      });
+      
+      continueBtn.addEventListener('click', function() {
+        if (currentStep < totalSteps) {
+          currentStep++;
+          showStep(currentStep);
+          updateUI();
+        } else if (currentStep === totalSteps) {
+          // Submit form
+          handleSubmit();
+        }
+      });
+      
+      function showStep(step) {
+        // Hide all steps
+        Object.values(steps).forEach(function(stepEl) {
+          stepEl.style.display = 'none';
+        });
+        
+        // Show current step
+        if (steps[step]) {
+          steps[step].style.display = 'block';
+          steps[step].classList.add('animate-fade-in');
+        }
+      }
+      
+      function canProceed() {
+        switch (currentStep) {
+          case 1:
+            return formData.projectType !== '';
+          case 2:
+            return formData.budget !== '';
+          case 3:
+            return formData.timeline !== '';
+          case 4:
+            return formData.name !== '' && formData.email !== '';
+          default:
+            return false;
+        }
+      }
+      
+      function updateUI() {
+        // Update progress
+        const percent = Math.round((currentStep / totalSteps) * 100);
+        currentStepEl.textContent = currentStep;
+        progressPercentEl.textContent = percent;
+        progressFillEl.style.width = percent + '%';
+        
+        // Update back button
+        backBtn.disabled = currentStep === 1;
+        
+        // Update continue button
+        continueBtn.disabled = !canProceed();
+        
+        // Update continue button text
+        if (currentStep === totalSteps) {
+          continueBtn.innerHTML = 'Submit request <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
+        } else {
+          continueBtn.innerHTML = 'Continue <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
+        }
+      }
+      
+      async function handleSubmit() {
+        // Validation
+        if (!canProceed()) return;
+        
+        continueBtn.disabled = true;
+        continueBtn.innerHTML = '<span class="spinner"></span> Submitting...';
+        
+        try {
+          // Real API call
+          await API.createProject(
+            formData.projectType,
+            formData.description,
+            formData.budget,
+            formData.timeline
+          );
+          
+          // Show success step
+          currentStep = 5;
+          showStep(5);
+          
+          // Hide progress and navigation
+          progressEl.style.display = 'none';
+          navButtons.style.display = 'none';
+        } catch (error) {
+          alert('Error: ' + error.message);
+          updateUI();
+        }
+      }
+    });
+  </script>
+</body>
+</html>

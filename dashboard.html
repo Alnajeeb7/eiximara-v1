@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EIXIMARA Dashboard - Track your project progress and manage payments.">
+  <meta name="theme-color" content="#F2FAF6">
+  <title>Dashboard - EIXIMARA</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Sidebar -->
+    <aside class="dashboard__sidebar">
+      <div class="dashboard__sidebar-header">
+        <a href="index.html" class="nav__logo text-gradient font-display">EIXIMARA</a>
+      </div>
+      
+      <nav class="dashboard__nav">
+        <a href="#overview" class="dashboard__nav-item dashboard__nav-item--active" data-section="overview">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+          </svg>
+          <span>Overview</span>
+        </a>
+        <a href="#status" class="dashboard__nav-item" data-section="status">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+          </svg>
+          <span>Project Status</span>
+        </a>
+        <a href="#messages" class="dashboard__nav-item" data-section="messages">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+          </svg>
+          <span>Messages</span>
+          <span class="dashboard__nav-badge" id="message-count">2</span>
+        </a>
+        <a href="#payment" class="dashboard__nav-item" data-section="payment">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+          </svg>
+          <span>Payment</span>
+        </a>
+      </nav>
+      
+      <div class="dashboard__sidebar-footer">
+        <div class="dashboard__user">
+          <div class="dashboard__user-avatar" id="user-avatar">U</div>
+          <div class="dashboard__user-info">
+            <span class="dashboard__user-name" id="user-name">User</span>
+            <span class="dashboard__user-email" id="user-email">user@example.com</span>
+          </div>
+        </div>
+        <button type="button" class="dashboard__logout" id="logout-btn">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="18" height="18">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+          </svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="dashboard__mobile-header">
+      <a href="index.html" class="nav__logo text-gradient font-display">EIXIMARA</a>
+      <button type="button" class="dashboard__menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard__main">
+      <!-- Overview Section -->
+      <section id="overview" class="dashboard__section dashboard__section--active">
+        <div class="dashboard__section-header">
+          <h1 class="dashboard__section-title font-display">Welcome back, <span id="welcome-name">User</span></h1>
+          <p class="dashboard__section-subtitle">Here&apos;s an overview of your project</p>
+        </div>
+
+        <div class="dashboard__cards">
+          <!-- Project Status Card -->
+          <div class="dashboard__card">
+            <div class="dashboard__card-header">
+              <h3 class="dashboard__card-title">Project Status</h3>
+              <span class="dashboard__card-badge dashboard__card-badge--progress" id="status-badge">In Progress</span>
+            </div>
+            <div class="dashboard__progress-ring">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="var(--color-border)" stroke-width="8"/>
+                <circle cx="50" cy="50" r="40" fill="none" stroke="var(--color-primary)" stroke-width="8" 
+                        stroke-dasharray="251.2" stroke-dashoffset="125.6" stroke-linecap="round"
+                        transform="rotate(-90 50 50)" id="progress-ring"/>
+              </svg>
+              <span class="dashboard__progress-value" id="progress-value">50%</span>
+            </div>
+            <p class="dashboard__card-text">Your portfolio website is being built</p>
+          </div>
+
+          <!-- Messages Card -->
+          <div class="dashboard__card">
+            <div class="dashboard__card-header">
+              <h3 class="dashboard__card-title">Recent Messages</h3>
+              <a href="#messages" class="dashboard__card-link" data-nav="messages">View all</a>
+            </div>
+            <div class="dashboard__messages-preview" id="messages-preview">
+              <!-- Messages will be populated by JS -->
+            </div>
+          </div>
+
+          <!-- Payment Card -->
+          <div class="dashboard__card">
+            <div class="dashboard__card-header">
+              <h3 class="dashboard__card-title">Payment Status</h3>
+              <span class="dashboard__card-badge dashboard__card-badge--pending" id="payment-badge">Pending</span>
+            </div>
+            <div class="dashboard__payment-summary">
+              <div class="dashboard__payment-row">
+                <span>Project Total</span>
+                <span class="dashboard__payment-amount" id="total-amount">$1,500</span>
+              </div>
+              <div class="dashboard__payment-row">
+                <span>Amount Paid</span>
+                <span class="dashboard__payment-amount text-gradient" id="paid-amount">$0</span>
+              </div>
+            </div>
+            <a href="#payment" class="btn btn--primary btn--sm hover-glow dashboard__pay-btn" data-nav="payment">
+              Make Payment
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Status Section -->
+      <section id="status" class="dashboard__section">
+        <div class="dashboard__section-header">
+          <h1 class="dashboard__section-title font-display">Project Status</h1>
+          <p class="dashboard__section-subtitle">Track the progress of your project</p>
+        </div>
+
+        <div class="dashboard__timeline">
+          <div class="dashboard__timeline-item dashboard__timeline-item--completed">
+            <div class="dashboard__timeline-marker">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <div class="dashboard__timeline-content">
+              <h3 class="dashboard__timeline-title">Project Booked</h3>
+              <p class="dashboard__timeline-description">Your project request has been received and confirmed.</p>
+              <span class="dashboard__timeline-date font-mono" id="booked-date">Jan 15, 2024</span>
+            </div>
+          </div>
+
+          <div class="dashboard__timeline-item dashboard__timeline-item--completed">
+            <div class="dashboard__timeline-marker">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+              </svg>
+            </div>
+            <div class="dashboard__timeline-content">
+              <h3 class="dashboard__timeline-title">Design Phase</h3>
+              <p class="dashboard__timeline-description">Mockups and design concepts are being created.</p>
+              <span class="dashboard__timeline-date font-mono">Jan 16, 2024</span>
+            </div>
+          </div>
+
+          <div class="dashboard__timeline-item dashboard__timeline-item--active" id="development-step">
+            <div class="dashboard__timeline-marker">
+              <div class="dashboard__timeline-pulse"></div>
+            </div>
+            <div class="dashboard__timeline-content">
+              <h3 class="dashboard__timeline-title">Development</h3>
+              <p class="dashboard__timeline-description">Your website is being built with modern technologies.</p>
+              <span class="dashboard__timeline-date font-mono">In Progress</span>
+            </div>
+          </div>
+
+          <div class="dashboard__timeline-item" id="review-step">
+            <div class="dashboard__timeline-marker"></div>
+            <div class="dashboard__timeline-content">
+              <h3 class="dashboard__timeline-title">Review & Approval</h3>
+              <p class="dashboard__timeline-description">Review your website and request any changes.</p>
+              <span class="dashboard__timeline-date font-mono">Pending</span>
+            </div>
+          </div>
+
+          <div class="dashboard__timeline-item" id="payment-step">
+            <div class="dashboard__timeline-marker"></div>
+            <div class="dashboard__timeline-content">
+              <h3 class="dashboard__timeline-title">Payment</h3>
+              <p class="dashboard__timeline-description">Complete payment to receive your project files.</p>
+              <span class="dashboard__timeline-date font-mono">Pending</span>
+            </div>
+          </div>
+
+          <div class="dashboard__timeline-item" id="delivery-step">
+            <div class="dashboard__timeline-marker"></div>
+            <div class="dashboard__timeline-content">
+              <h3 class="dashboard__timeline-title">Delivery</h3>
+              <p class="dashboard__timeline-description">Receive your live website URL and GitHub repository access.</p>
+              <span class="dashboard__timeline-date font-mono">Pending</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Details Card -->
+        <div class="dashboard__details-card card">
+          <h3 class="dashboard__details-title font-display">Project Details</h3>
+          <div class="dashboard__details-grid">
+            <div class="dashboard__detail">
+              <span class="dashboard__detail-label">Project Type</span>
+              <span class="dashboard__detail-value" id="project-type">Portfolio Website</span>
+            </div>
+            <div class="dashboard__detail">
+              <span class="dashboard__detail-label">Timeline</span>
+              <span class="dashboard__detail-value" id="project-timeline">Standard (2 weeks)</span>
+            </div>
+            <div class="dashboard__detail">
+              <span class="dashboard__detail-label">Budget</span>
+              <span class="dashboard__detail-value" id="project-budget">$1,500</span>
+            </div>
+            <div class="dashboard__detail">
+              <span class="dashboard__detail-label">Start Date</span>
+              <span class="dashboard__detail-value" id="start-date">January 15, 2024</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Messages Section -->
+      <section id="messages" class="dashboard__section">
+        <div class="dashboard__section-header">
+          <h1 class="dashboard__section-title font-display">Communication</h1>
+          <p class="dashboard__section-subtitle">Real-time chat with the EIXIMARA team</p>
+        </div>
+
+        <div class="chat-system">
+          <div class="chat__header">
+            <div class="chat__user-info">
+              <div class="chat__user-avatar">E</div>
+              <div class="chat__user-details">
+                <span class="chat__user-name">EIXIMARA Support</span>
+                <span class="chat__user-status">Online</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat__messages" id="chat-messages-scroll">
+            <!-- Messages populated by JS -->
+          </div>
+
+          <div class="chat__input-container">
+            <form id="client-chat-form" class="chat__input-wrapper">
+              <textarea id="chat-textarea" class="chat__textarea" placeholder="Type your message here..." rows="1"></textarea>
+              <button type="submit" id="chat-send-btn" class="chat__send-btn" title="Send message">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Payment Section -->
+      <section id="payment" class="dashboard__section">
+        <div class="dashboard__section-header">
+          <h1 class="dashboard__section-title font-display">Payment</h1>
+          <p class="dashboard__section-subtitle">Complete your payment to receive your project</p>
+        </div>
+
+        <div class="dashboard__payment-container">
+          <!-- Payment Summary -->
+          <div class="dashboard__payment-card card">
+            <h3 class="dashboard__payment-title font-display">Payment Summary</h3>
+            <div class="dashboard__payment-details">
+              <div class="dashboard__payment-line">
+                <span>Portfolio Website</span>
+                <span>$1,200</span>
+              </div>
+              <div class="dashboard__payment-line">
+                <span>Priority Delivery (+25%)</span>
+                <span>$300</span>
+              </div>
+              <div class="dashboard__payment-line dashboard__payment-line--total">
+                <span>Total</span>
+                <span class="text-gradient" id="payment-total">$1,500</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- QR Code Payment -->
+          <div class="dashboard__payment-card card" id="payment-qr-section">
+            <h3 class="dashboard__payment-title font-display">Scan to Pay</h3>
+            <div class="dashboard__qr-container">
+              <div class="dashboard__qr-code">
+                <!-- QR Code placeholder - In production, generate real QR -->
+                <svg viewBox="0 0 200 200" fill="none">
+                  <rect width="200" height="200" fill="white"/>
+                  <rect x="20" y="20" width="40" height="40" fill="var(--color-foreground)"/>
+                  <rect x="140" y="20" width="40" height="40" fill="var(--color-foreground)"/>
+                  <rect x="20" y="140" width="40" height="40" fill="var(--color-foreground)"/>
+                  <rect x="25" y="25" width="30" height="30" fill="white"/>
+                  <rect x="145" y="25" width="30" height="30" fill="white"/>
+                  <rect x="25" y="145" width="30" height="30" fill="white"/>
+                  <rect x="30" y="30" width="20" height="20" fill="var(--color-foreground)"/>
+                  <rect x="150" y="30" width="20" height="20" fill="var(--color-foreground)"/>
+                  <rect x="30" y="150" width="20" height="20" fill="var(--color-foreground)"/>
+                  <!-- Pattern -->
+                  <rect x="70" y="20" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="90" y="20" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="110" y="20" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="70" y="40" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="100" y="40" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="120" y="40" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="80" y="60" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="100" y="60" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="20" y="70" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="40" y="80" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="70" y="80" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="90" y="90" width="20" height="20" fill="var(--color-foreground)"/>
+                  <rect x="120" y="80" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="150" y="70" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="170" y="80" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="70" y="110" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="90" y="120" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="120" y="110" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="70" y="140" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="90" y="150" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="110" y="140" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="130" y="160" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="150" y="140" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="170" y="150" width="10" height="10" fill="var(--color-foreground)"/>
+                  <rect x="140" y="130" width="40" height="40" stroke="var(--color-foreground)" stroke-width="4" fill="white"/>
+                  <rect x="150" y="140" width="20" height="20" fill="var(--color-foreground)"/>
+                </svg>
+              </div>
+              <p class="dashboard__qr-instruction">Scan this QR code with your payment app</p>
+            </div>
+          </div>
+
+          <!-- Payment Confirmation -->
+          <div class="dashboard__payment-card card" id="payment-confirm-section">
+            <h3 class="dashboard__payment-title font-display">Confirm Payment</h3>
+            <form id="payment-form" class="dashboard__payment-form">
+              <div class="dashboard__field">
+                <label for="payment-url" class="label">Payment URL / Transaction ID</label>
+                <input type="text" id="payment-url" name="paymentUrl" class="input input--lg" 
+                       placeholder="Paste your payment confirmation URL or transaction ID" required>
+                <p class="dashboard__field-hint">After completing payment, paste the transaction URL or ID here</p>
+              </div>
+              
+              <button type="submit" class="btn btn--primary btn--lg hover-glow dashboard__confirm-btn">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                </svg>
+                I have paid
+              </button>
+            </form>
+          </div>
+
+          <!-- Payment Success (Hidden by default) -->
+          <div class="dashboard__payment-card card dashboard__payment-success" id="payment-success" style="display: none;">
+            <div class="dashboard__success-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="dashboard__payment-title font-display">Payment Submitted</h3>
+            <p class="dashboard__success-text">Your payment is being verified. You will receive your project details once confirmed.</p>
+            
+            <!-- Project Delivery Details (shown after admin approval) -->
+            <div class="dashboard__delivery" id="delivery-details" style="display: none;">
+              <h3 class="dashboard__delivery-title">Your Project is Ready!</h3>
+              <div class="dashboard__delivery-links">
+                <a href="#" class="dashboard__delivery-link" id="project-url-link" target="_blank">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                  </svg>
+                  <span>View Live Website</span>
+                </a>
+                <a href="#" class="dashboard__delivery-link" id="github-url-link" target="_blank">
+                  <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                  <span>GitHub Repository</span>
+                </a>
+                <p id="github-hint" style="font-size: 0.75rem; color: var(--color-muted-foreground); margin-top: 0.5rem; display: none;">
+                  Note: Please check your email for the GitHub transfer invite. It may take a few hours to process.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      'use strict';
+      
+      // Check authentication
+      if (!API.isLoggedIn()) {
+        window.location.href = 'auth.html';
+        return;
+      }
+      
+      // Redirect admin to admin panel
+      if (API.isAdmin()) {
+        window.location.href = 'admin.html';
+        return;
+      }
+      
+      const user = API.getUser();
+      if (!user) {
+        API.clearAuth();
+        window.location.href = 'auth.html';
+        return;
+      }
+      
+      let projectData = null;
+      let messagesData = [];
+      
+      // DOM Elements
+      const sidebar = document.querySelector('.dashboard__sidebar');
+      const menuToggle = document.getElementById('menu-toggle');
+      const navItems = document.querySelectorAll('.dashboard__nav-item');
+      const sections = document.querySelectorAll('.dashboard__section');
+      const logoutBtn = document.getElementById('logout-btn');
+      const paymentForm = document.getElementById('payment-form');
+      
+      // Populate user info
+      const userName = user.firstName + ' ' + user.lastName;
+      document.getElementById('user-avatar').textContent = user.firstName ? user.firstName.charAt(0).toUpperCase() : 'U';
+      document.getElementById('user-name').textContent = userName || 'User';
+      document.getElementById('user-email').textContent = user.email || 'user@example.com';
+      document.getElementById('welcome-name').textContent = user.firstName || 'User';
+      
+      // Load data from API
+      await loadDashboardData();
+      
+      async function loadDashboardData() {
+        try {
+          // Get projects
+          const projects = await API.getProjects();
+          projectData = projects.length > 0 ? projects[0] : null;
+          
+          // Get messages if project exists
+          if (projectData) {
+            messagesData = await API.getProjectMessages(projectData.id);
+            const unreadData = await API.getUnreadCount();
+            updateUnreadBadge(unreadData.count);
+          }
+          
+          updateDashboard();
+        } catch (error) {
+          console.error('Error loading dashboard data:', error);
+          // Show no project state
+          showNoProjectState();
+        }
+      }
+      
+      function showNoProjectState() {
+        document.querySelector('.dashboard__section--active').innerHTML = 
+          '<div class="dashboard__section-header">' +
+            '<h1 class="dashboard__section-title font-display">Welcome, ' + (user.firstName || 'User') + '</h1>' +
+            '<p class="dashboard__section-subtitle">You don\'t have any active projects yet</p>' +
+          '</div>' +
+          '<div class="admin__empty">' +
+            '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="48" height="48">' +
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>' +
+            '</svg>' +
+            '<p>Book a project to get started!</p>' +
+            '<a href="book.html" class="btn btn--primary hover-glow">Book a Project</a>' +
+          '</div>';
+      }
+      
+      function updateUnreadBadge(count) {
+        const messageCount = document.getElementById('message-count');
+        if (messageCount) {
+          messageCount.textContent = count;
+          messageCount.style.display = count > 0 ? 'flex' : 'none';
+        }
+      }
+      
+      function updateDashboard() {
+        if (!projectData) {
+          showNoProjectState();
+          return;
+        }
+        
+        // Update progress ring
+        const progressRing = document.getElementById('progress-ring');
+        const progressValue = document.getElementById('progress-value');
+        if (progressRing && progressValue) {
+          const progress = projectData.progress || 0;
+          const circumference = 251.2;
+          const offset = circumference - (progress / 100) * circumference;
+          progressRing.style.strokeDashoffset = offset;
+          progressValue.textContent = progress + '%';
+        }
+        
+        // Update status badge
+        const statusBadge = document.getElementById('status-badge');
+        if (statusBadge) {
+          const statusMap = {
+            'pending': 'Pending',
+            'in_progress': 'In Progress',
+            'review': 'Under Review',
+            'completed': 'Completed'
+          };
+          statusBadge.textContent = statusMap[projectData.status] || 'Pending';
+          
+          // Update badge class
+          const classMap = {
+            'pending': 'pending',
+            'in_progress': 'progress',
+            'review': 'progress',
+            'completed': 'success'
+          };
+          statusBadge.className = 'dashboard__card-badge dashboard__card-badge--' + (classMap[projectData.status] || 'pending');
+        }
+        
+        // Update payment badge
+        const paymentBadge = document.getElementById('payment-badge');
+        if (paymentBadge) {
+          const paymentMap = {
+            'pending': { text: 'Pending', class: 'pending' },
+            'submitted': { text: 'Submitted', class: 'progress' },
+            'verified': { text: 'Verified', class: 'success' }
+          };
+          const payment = paymentMap[projectData.paymentStatus] || paymentMap['pending'];
+          paymentBadge.textContent = payment.text;
+          paymentBadge.className = 'dashboard__card-badge dashboard__card-badge--' + payment.class;
+        }
+        
+        // Update amounts
+        const totalAmount = document.getElementById('total-amount');
+        const paidAmount = document.getElementById('paid-amount');
+        const paymentTotal = document.getElementById('payment-total');
+        if (totalAmount) totalAmount.textContent = '$' + (projectData.paymentAmount || 0).toLocaleString();
+        if (paidAmount) paidAmount.textContent = projectData.paymentStatus === 'verified' ? '$' + (projectData.paymentAmount || 0).toLocaleString() : '$0';
+        if (paymentTotal) paymentTotal.textContent = '$' + (projectData.paymentAmount || 0).toLocaleString();
+        
+        // Update project details
+        const projectType = document.getElementById('project-type');
+        const projectTimeline = document.getElementById('project-timeline');
+        const projectBudget = document.getElementById('project-budget');
+        const startDate = document.getElementById('start-date');
+        
+        if (projectType) projectType.textContent = projectData.projectType || 'Not specified';
+        if (projectTimeline) projectTimeline.textContent = projectData.timeline || 'Standard';
+        if (projectBudget) projectBudget.textContent = projectData.budget || 'Not specified';
+        if (startDate) startDate.textContent = new Date(projectData.createdAt).toLocaleDateString('en-US', { 
+          year: 'numeric', month: 'long', day: 'numeric' 
+        });
+        
+        // Update booked date in timeline
+        const bookedDate = document.getElementById('booked-date');
+        if (bookedDate) {
+          bookedDate.textContent = new Date(projectData.createdAt).toLocaleDateString('en-US', { 
+            month: 'short', day: 'numeric', year: 'numeric' 
+          });
+        }
+        
+        // Update messages
+        updateMessages();
+        
+        // Update payment section
+        updatePaymentSection();
+        
+        // Update timeline status
+        updateTimeline();
+      }
+      
+      function updateTimeline() {
+        const developmentStep = document.getElementById('development-step');
+        const reviewStep = document.getElementById('review-step');
+        const paymentStep = document.getElementById('payment-step');
+        const deliveryStep = document.getElementById('delivery-step');
+        
+        // Reset all steps
+        [developmentStep, reviewStep, paymentStep, deliveryStep].forEach(function(step) {
+          if (step) {
+            step.classList.remove('dashboard__timeline-item--completed', 'dashboard__timeline-item--active');
+          }
+        });
+        
+        // Update based on status
+        if (projectData.status === 'in_progress') {
+          if (developmentStep) developmentStep.classList.add('dashboard__timeline-item--active');
+        } else if (projectData.status === 'review') {
+          if (developmentStep) developmentStep.classList.add('dashboard__timeline-item--completed');
+          if (reviewStep) reviewStep.classList.add('dashboard__timeline-item--active');
+        } else if (projectData.status === 'completed') {
+          if (developmentStep) developmentStep.classList.add('dashboard__timeline-item--completed');
+          if (reviewStep) reviewStep.classList.add('dashboard__timeline-item--completed');
+          
+          if (projectData.paymentStatus === 'verified') {
+            if (paymentStep) paymentStep.classList.add('dashboard__timeline-item--completed');
+            if (deliveryStep) {
+              deliveryStep.classList.add(projectData.projectUrl ? 'dashboard__timeline-item--completed' : 'dashboard__timeline-item--active');
+            }
+          } else if (projectData.paymentStatus === 'submitted') {
+            if (paymentStep) paymentStep.classList.add('dashboard__timeline-item--active');
+          } else {
+            if (paymentStep) paymentStep.classList.add('dashboard__timeline-item--active');
+          }
+        }
+      }
+      
+      function updateMessages() {
+        const chatContainer = document.getElementById('chat-messages-scroll');
+        if (!chatContainer) return;
+
+        // Update unread count for badge
+        const unreadCount = messagesData.filter(function(m) { return !m.isRead && m.senderRole === 'admin'; }).length;
+        updateUnreadBadge(unreadCount);
+        
+        if (!messagesData || messagesData.length === 0) {
+          chatContainer.innerHTML = '<div class="messenger__empty">' +
+            '<div class="messenger__empty-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div>' +
+            '<p>No messages yet. Start the conversation!</p>'+
+          '</div>';
+        } else {
+          chatContainer.innerHTML = messagesData.map(function(msg) {
+            const isAdmin = msg.senderRole === 'admin';
+            return '<div class="chat__bubble-group ' + (isAdmin ? 'chat__bubble-group--them' : 'chat__bubble-group--me') + '">' +
+              '<div class="chat__bubble ' + (isAdmin ? 'chat__bubble--them' : 'chat__bubble--me') + '">' +
+                msg.content +
+              '</div>' +
+              '<div class="chat__bubble-time">' + formatTime(msg.createdAt) + '</div>' +
+            '</div>';
+          }).join('');
+          
+          // Auto scroll to bottom
+          chatContainer.scrollTo({
+            top: chatContainer.scrollHeight,
+            behavior: 'smooth'
+          });
+        }
+      }
+      
+      function updatePaymentSection() {
+        const qrSection = document.getElementById('payment-qr-section');
+        const confirmSection = document.getElementById('payment-confirm-section');
+        const successSection = document.getElementById('payment-success');
+        const deliveryDetails = document.getElementById('delivery-details');
+        const successTitle = document.querySelector('.dashboard__payment-title');
+        const successText = document.querySelector('.dashboard__success-text');
+        
+        if (!projectData) return;
+        
+        if (projectData.paymentStatus === 'pending') {
+          if (qrSection) qrSection.style.display = 'block';
+          if (confirmSection) confirmSection.style.display = 'block';
+          if (successSection) successSection.style.display = 'none';
+        } else {
+          // If payment was submitted or verified
+          if (qrSection) qrSection.style.display = 'none';
+          if (confirmSection) confirmSection.style.display = 'none';
+          if (successSection) successSection.style.display = 'block';
+          
+          // Show delivery details if links exist
+          if (projectData.projectUrl || projectData.githubRepo) {
+            if (deliveryDetails) deliveryDetails.style.display = 'block';
+            if (successTitle) successTitle.textContent = 'Project Delivered!';
+            if (successText) successText.textContent = 'Your project is ready! Access your links below.';
+            
+            // Update delivery links
+            if (projectData.projectUrl) {
+              const projectLink = document.getElementById('project-url-link');
+              if (projectLink) {
+                projectLink.href = projectData.projectUrl;
+                projectLink.style.display = 'flex';
+              }
+            } else {
+              const projectLink = document.getElementById('project-url-link');
+              if (projectLink) projectLink.style.display = 'none';
+            }
+            
+            if (projectData.githubRepo) {
+              const githubLink = document.getElementById('github-url-link');
+              const githubHint = document.getElementById('github-hint');
+              if (githubLink) {
+                githubLink.href = projectData.githubRepo;
+                githubLink.style.display = 'flex';
+              }
+              if (githubHint) githubHint.style.display = 'block';
+            } else {
+              const githubLink = document.getElementById('github-url-link');
+              const githubHint = document.getElementById('github-hint');
+              if (githubLink) githubLink.style.display = 'none';
+              if (githubHint) githubHint.style.display = 'none';
+            }
+          } else {
+            // No links yet
+            if (deliveryDetails) deliveryDetails.style.display = 'none';
+            if (successTitle) successTitle.textContent = 'Payment Submitted';
+            if (successText) successText.textContent = 'Your payment is being verified. You will receive your project details once confirmed.';
+          }
+        }
+      }
+      
+      function formatTime(timestamp) {
+        if (!timestamp) return '';
+        
+        // Ensure timestamp is treated as UTC by appending Z if missing
+        let dateString = timestamp;
+        if (typeof dateString === 'string' && !dateString.endsWith('Z') && !dateString.includes('+')) {
+          dateString += 'Z';
+        }
+        
+        const date = new Date(dateString);
+        const now = new Date();
+        const diff = now - date;
+        
+        if (isNaN(date.getTime())) return timestamp;
+        if (diff < 60000) return 'Just now';
+        if (diff < 3600000) return Math.floor(diff / 60000) + 'm ago';
+        if (diff < 86400000) return Math.floor(diff / 3600000) + 'h ago';
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      }
+      
+      // Mobile menu toggle
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          sidebar.classList.toggle('dashboard__sidebar--open');
+        });
+      }
+      
+      // Navigation
+      navItems.forEach(function(item) {
+        item.addEventListener('click', async function(e) {
+          e.preventDefault();
+          const sectionId = this.dataset.section;
+          
+          // Update active nav item
+          navItems.forEach(function(nav) {
+            nav.classList.remove('dashboard__nav-item--active');
+          });
+          this.classList.add('dashboard__nav-item--active');
+          
+          // Show section
+          sections.forEach(function(section) {
+            section.classList.remove('dashboard__section--active');
+            if (section.id === sectionId) {
+              section.classList.add('dashboard__section--active');
+            }
+          });
+          
+          // Refresh messages when viewing messages section
+          if (sectionId === 'messages' && projectData) {
+            try {
+              messagesData = await API.getProjectMessages(projectData.id);
+              updateMessages();
+            } catch (error) {
+              console.error('Error refreshing messages:', error);
+            }
+          }
+          
+          // Close mobile sidebar
+          sidebar.classList.remove('dashboard__sidebar--open');
+        });
+      });
+      
+      // Card navigation links
+      document.querySelectorAll('[data-nav]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const sectionId = this.dataset.nav;
+          const navItem = document.querySelector('[data-section="' + sectionId + '"]');
+          if (navItem) navItem.click();
+        });
+      });
+      
+      // Payment form submission
+      if (paymentForm) {
+        paymentForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          if (!projectData) {
+            alert('No active project found');
+            return;
+          }
+          
+          const paymentUrl = document.getElementById('payment-url').value;
+          
+          if (!paymentUrl) {
+            alert('Please enter your payment URL or transaction ID');
+            return;
+          }
+          
+          const btn = this.querySelector('button[type="submit"]');
+          btn.disabled = true;
+          btn.innerHTML = '<span style="opacity:0.7">Submitting...</span>';
+          
+          try {
+            await API.submitPayment(projectData.id, paymentUrl);
+            
+            // Refresh project data
+            const projects = await API.getProjects();
+            projectData = projects.length > 0 ? projects[0] : null;
+            
+            // Update UI
+            updatePaymentSection();
+            updateDashboard();
+          } catch (error) {
+            alert('Error submitting payment: ' + error.message);
+            btn.disabled = false;
+            btn.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> I have paid';
+          }
+        });
+      }
+      
+      // Logout
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+          API.logout();
+        });
+      }
+      
+      // Client Chat Form Submission
+      const clientChatForm = document.getElementById('client-chat-form');
+      const chatTextarea = document.getElementById('chat-textarea');
+      
+      if (clientChatForm && chatTextarea) {
+        // Auto-expand textarea
+        chatTextarea.addEventListener('input', function() {
+          this.style.height = 'auto';
+          this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+
+        // Handle ENTER to submit (SHIFT+ENTER for new line)
+        chatTextarea.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            clientChatForm.dispatchEvent(new Event('submit'));
+          }
+        });
+
+        clientChatForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          if (!projectData) {
+            alert('No active project found.');
+            return;
+          }
+          
+          const content = chatTextarea.value.trim();
+          if (!content) return;
+          
+          const btn = document.getElementById('chat-send-btn');
+          btn.disabled = true;
+          
+          try {
+            await API.sendMessage(projectData.id, content);
+            chatTextarea.value = '';
+            chatTextarea.style.height = 'auto';
+            
+            // Refresh messages immediately
+            messagesData = await API.getProjectMessages(projectData.id);
+            updateMessages();
+          } catch (error) {
+            alert('Error sending message: ' + error.message);
+          } finally {
+            btn.disabled = false;
+          }
+        });
+
+        // Start polling for new messages (every 10 seconds)
+        setInterval(async function() {
+          if (projectData && document.getElementById('messages').classList.contains('dashboard__section--active')) {
+            try {
+              messagesData = await API.getProjectMessages(projectData.id);
+              updateMessages();
+            } catch (error) {
+              console.error('Polling error:', error);
+            }
+          }
+        }, 10000);
+      }
+    });
+  </script>
+</body>
+</html>

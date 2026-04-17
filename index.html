@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EIXIMARA - We build stunning portfolio websites and custom software solutions for students and professionals. Professional design, fast turnaround, easy contact.">
+  <meta name="theme-color" content="#F2FAF6">
+  <title>EIXIMARA - Premium Portfolio & Software Solutions</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ═══════════════════════════════════════════════════
+       NAVIGATION
+       ═══════════════════════════════════════════════════ -->
+  <header class="nav">
+    <div class="nav__wrapper">
+      <nav class="nav__inner">
+        <!-- Logo -->
+        <a href="#" class="nav__logo text-gradient">EIXIMARA</a>
+        
+        <!-- Desktop Links -->
+        <div class="nav__links">
+          <a href="#services" class="nav__link">Services</a>
+          <a href="#work" class="nav__link">Work</a>
+          <a href="#process" class="nav__link">Process</a>
+          <a href="#pricing" class="nav__link">Pricing</a>
+          <a href="#contact" class="nav__link">Contact</a>
+        </div>
+        
+        <!-- Desktop Actions -->
+        <div class="nav__actions">
+          <a href="auth.html" class="nav__signin">Sign in</a>
+          <a href="book.html" class="btn btn--primary btn--sm hover-glow">Book a project</a>
+        </div>
+        
+        <!-- Mobile Toggle -->
+        <button class="nav__toggle" aria-label="Toggle menu">
+          <svg class="nav__toggle-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </nav>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="nav__mobile">
+      <div class="nav__mobile-links">
+        <a href="#services" class="nav__mobile-link">Services</a>
+        <a href="#work" class="nav__mobile-link">Work</a>
+        <a href="#process" class="nav__mobile-link">Process</a>
+        <a href="#pricing" class="nav__mobile-link">Pricing</a>
+        <a href="#contact" class="nav__mobile-link">Contact</a>
+      </div>
+      <div class="nav__mobile-actions">
+        <a href="auth.html" class="btn btn--outline">Sign in</a>
+        <a href="book.html" class="btn btn--primary hover-glow">Book a project</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="noise-overlay">
+    <!-- ═══════════════════════════════════════════════════
+         HERO SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section class="hero">
+      <!-- Animated Sphere Background -->
+      <div class="hero__canvas">
+        <canvas id="sphere-canvas"></canvas>
+      </div>
+      
+      <!-- Grid Lines -->
+      <div class="hero__grid" aria-hidden="true">
+        <div class="hero__grid-line--h" style="top: 12.5%"></div>
+        <div class="hero__grid-line--h" style="top: 25%"></div>
+        <div class="hero__grid-line--h" style="top: 37.5%"></div>
+        <div class="hero__grid-line--h" style="top: 50%"></div>
+        <div class="hero__grid-line--h" style="top: 62.5%"></div>
+        <div class="hero__grid-line--h" style="top: 75%"></div>
+        <div class="hero__grid-line--h" style="top: 87.5%"></div>
+        <div class="hero__grid-line--v" style="left: 8.33%"></div>
+        <div class="hero__grid-line--v" style="left: 16.66%"></div>
+        <div class="hero__grid-line--v" style="left: 25%"></div>
+        <div class="hero__grid-line--v" style="left: 33.33%"></div>
+        <div class="hero__grid-line--v" style="left: 41.66%"></div>
+        <div class="hero__grid-line--v" style="left: 50%"></div>
+        <div class="hero__grid-line--v" style="left: 58.33%"></div>
+        <div class="hero__grid-line--v" style="left: 66.66%"></div>
+        <div class="hero__grid-line--v" style="left: 75%"></div>
+        <div class="hero__grid-line--v" style="left: 83.33%"></div>
+        <div class="hero__grid-line--v" style="left: 91.66%"></div>
+      </div>
+      
+      <div class="hero__content container">
+        <!-- Eyebrow -->
+        <div class="hero__eyebrow">Premium software solutions</div>
+        
+        <!-- Main Headline -->
+        <h1 class="hero__title font-display">
+          <span class="hero__title-line">We build</span>
+          <span class="hero__title-line">
+            <span class="cuboid-container">
+              <span class="cuboid-rotator" id="cuboid-rotator">
+                <span class="cuboid-side cuboid-side--0">stunning</span>
+                <span class="cuboid-side cuboid-side--1">beautiful</span>
+                <span class="cuboid-side cuboid-side--2">amazing</span>
+                <span class="cuboid-side cuboid-side--3">powerful</span>
+              </span>
+            </span>
+          </span>
+          <span class="hero__title-line">
+            <span class="hero__word text-gradient" id="hero-word">portfolios</span>
+          </span>
+        </h1>
+        
+        <!-- Description & CTAs -->
+        <div style="display: grid; gap: 3rem;">
+          <p class="hero__description">
+            Portfolio websites and custom software for students and professionals. 
+            Professional design, fast turnaround, premium results.
+          </p>
+          
+          <div class="hero__cta">
+            <a href="book.html" class="btn btn--primary btn--lg hover-glow">
+              Start your project
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+            <a href="#work" class="btn btn--outline btn--lg">View our work</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Stats Marquee -->
+      <div class="hero__stats">
+        <div class="hero__stats-track marquee">
+          <div class="hero__stat">
+            <span class="hero__stat-value text-gradient">50+</span>
+            <span class="hero__stat-label">
+              projects delivered
+              <span class="hero__stat-highlight">PORTFOLIOS</span>
+            </span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value text-gradient">3 days</span>
+            <span class="hero__stat-label">
+              average delivery
+              <span class="hero__stat-highlight">EXPRESS</span>
+            </span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value text-gradient">100%</span>
+            <span class="hero__stat-label">
+              client satisfaction
+              <span class="hero__stat-highlight">QUALITY</span>
+            </span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value text-gradient">24/7</span>
+            <span class="hero__stat-label">
+              support available
+              <span class="hero__stat-highlight">SUPPORT</span>
+            </span>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="hero__stat">
+            <span class="hero__stat-value text-gradient">50+</span>
+            <span class="hero__stat-label">
+              projects delivered
+              <span class="hero__stat-highlight">PORTFOLIOS</span>
+            </span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value text-gradient">3 days</span>
+            <span class="hero__stat-label">
+              average delivery
+              <span class="hero__stat-highlight">EXPRESS</span>
+            </span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value text-gradient">100%</span>
+            <span class="hero__stat-label">
+              client satisfaction
+              <span class="hero__stat-highlight">QUALITY</span>
+            </span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value text-gradient">24/7</span>
+            <span class="hero__stat-label">
+              support available
+              <span class="hero__stat-highlight">SUPPORT</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         SERVICES SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section id="services" class="section">
+      <div class="container">
+        <!-- Header -->
+        <div style="margin-bottom: 4rem;">
+          <span class="section__eyebrow">Our Services</span>
+          <h2 class="section__title font-display" data-animate>
+            What we offer.<br>
+            <span style="color: var(--color-muted-foreground);">Built with care.</span>
+          </h2>
+        </div>
+        
+        <!-- Services List -->
+        <div>
+          <!-- Service 1: Portfolio Websites -->
+          <article class="services__item" data-animate>
+            <span class="services__number">01</span>
+            <div class="services__content">
+              <div>
+                <h3 class="services__title font-display">Portfolio Websites</h3>
+                <p class="services__description">
+                  Stand out with a professional portfolio that showcases your work. Perfect for students and professionals looking to make a strong impression.
+                </p>
+              </div>
+              <div class="services__visual">
+                <svg viewBox="0 0 200 160">
+                  <defs>
+                    <linearGradient id="portfolioGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#7c3aed"/>
+                      <stop offset="100%" stop-color="#ec4899"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="30" y="20" width="140" height="120" rx="6" fill="none" stroke="url(#portfolioGrad)" stroke-width="2"/>
+                  <circle cx="45" cy="32" r="3" fill="#7c3aed" opacity="0.6"/>
+                  <circle cx="58" cy="32" r="3" fill="#7c3aed" opacity="0.4"/>
+                  <circle cx="71" cy="32" r="3" fill="#7c3aed" opacity="0.2"/>
+                  <rect x="40" y="50" width="60" height="30" rx="2" fill="#7c3aed" opacity="0.3">
+                    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite"/>
+                  </rect>
+                  <rect x="110" y="50" width="50" height="80" rx="2" fill="#2cb67d" opacity="0.2">
+                    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" begin="0.3s" repeatCount="indefinite"/>
+                  </rect>
+                  <rect x="40" y="90" width="60" height="40" rx="2" fill="#ec4899" opacity="0.25">
+                    <animate attributeName="opacity" values="0.25;0.55;0.25" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+                  </rect>
+                </svg>
+              </div>
+            </div>
+          </article>
+          
+          <!-- Service 2: Custom Software -->
+          <article class="services__item" data-animate>
+            <span class="services__number">02</span>
+            <div class="services__content">
+              <div>
+                <h3 class="services__title font-display">Custom Software</h3>
+                <p class="services__description">
+                  Tailored software solutions built for your specific needs. From web apps to automation tools, we bring your ideas to life.
+                </p>
+              </div>
+              <div class="services__visual">
+                <svg viewBox="0 0 200 160">
+                  <defs>
+                    <linearGradient id="softwareGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2cb67d"/>
+                      <stop offset="100%" stop-color="#3b82f6"/>
+                    </linearGradient>
+                  </defs>
+                  <circle cx="100" cy="80" r="25" fill="none" stroke="url(#softwareGrad)" stroke-width="3">
+                    <animateTransform attributeName="transform" type="rotate" from="0 100 80" to="360 100 80" dur="8s" repeatCount="indefinite"/>
+                  </circle>
+                  <line x1="40" y1="80" x2="75" y2="80" stroke="#2cb67d" stroke-width="2" stroke-dasharray="4 4">
+                    <animate attributeName="stroke-dashoffset" values="0;-8" dur="0.5s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="125" y1="80" x2="160" y2="80" stroke="#2cb67d" stroke-width="2" stroke-dasharray="4 4">
+                    <animate attributeName="stroke-dashoffset" values="0;-8" dur="0.5s" repeatCount="indefinite"/>
+                  </line>
+                  <circle cx="35" cy="80" r="8" fill="none" stroke="#7c3aed" stroke-width="2"/>
+                  <circle cx="165" cy="80" r="8" fill="#2cb67d" opacity="0.6">
+                    <animate attributeName="opacity" values="0.6;1;0.6" dur="1.5s" repeatCount="indefinite"/>
+                  </circle>
+                </svg>
+              </div>
+            </div>
+          </article>
+          
+          <!-- Service 3: Personal Branding -->
+          <article class="services__item" data-animate>
+            <span class="services__number">03</span>
+            <div class="services__content">
+              <div>
+                <h3 class="services__title font-display">Personal Branding</h3>
+                <p class="services__description">
+                  Establish your digital presence with cohesive branding. We help you create a memorable identity that resonates with your audience.
+                </p>
+              </div>
+              <div class="services__visual">
+                <svg viewBox="0 0 200 160">
+                  <defs>
+                    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#7c3aed"/>
+                      <stop offset="50%" stop-color="#ec4899"/>
+                      <stop offset="100%" stop-color="#2cb67d"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 100 30 L 140 80 L 100 130 L 60 80 Z" fill="none" stroke="url(#brandGrad)" stroke-width="2">
+                    <animate attributeName="stroke-dasharray" values="0 400;400 0" dur="3s" repeatCount="indefinite"/>
+                  </path>
+                  <path d="M 100 50 L 125 80 L 100 110 L 75 80 Z" fill="#7c3aed" opacity="0.2">
+                    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="2s" repeatCount="indefinite"/>
+                  </path>
+                  <circle cx="100" cy="80" r="5" fill="#ec4899">
+                    <animate attributeName="r" values="5;8;5" dur="1.5s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="50" cy="40" r="2" fill="#7c3aed" opacity="0">
+                    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="150" cy="50" r="2" fill="#2cb67d" opacity="0">
+                    <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+                  </circle>
+                  <circle cx="145" cy="120" r="2" fill="#ec4899" opacity="0">
+                    <animate attributeName="opacity" values="0;1;0" dur="2s" begin="1s" repeatCount="indefinite"/>
+                  </circle>
+                </svg>
+              </div>
+            </div>
+          </article>
+          
+          <!-- Service 4: Support & Maintenance -->
+          <article class="services__item" data-animate>
+            <span class="services__number">04</span>
+            <div class="services__content">
+              <div>
+                <h3 class="services__title font-display">Support & Maintenance</h3>
+                <p class="services__description">
+                  Ongoing support to keep your projects running smoothly. Bug fixes, updates, and feature enhancements when you need them.
+                </p>
+              </div>
+              <div class="services__visual">
+                <svg viewBox="0 0 200 160">
+                  <defs>
+                    <linearGradient id="supportGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2cb67d"/>
+                      <stop offset="100%" stop-color="#7c3aed"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M 100 25 L 145 45 L 145 85 Q 145 120 100 140 Q 55 120 55 85 L 55 45 Z" fill="none" stroke="url(#supportGrad)" stroke-width="2"/>
+                  <path d="M 100 40 L 130 55 L 130 80 Q 130 105 100 120 Q 70 105 70 80 L 70 55 Z" fill="#2cb67d" opacity="0.1">
+                    <animate attributeName="opacity" values="0.1;0.3;0.1" dur="2s" repeatCount="indefinite"/>
+                  </path>
+                  <path d="M 80 80 L 95 95 L 120 65" fill="none" stroke="#2cb67d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                    <animate attributeName="stroke-dasharray" values="0 100;100 0" dur="1.5s" repeatCount="indefinite"/>
+                  </path>
+                  <circle cx="100" cy="85" r="20" fill="none" stroke="#7c3aed" stroke-width="1" opacity="0">
+                    <animate attributeName="r" values="20;50" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.5;0" dur="2s" repeatCount="indefinite"/>
+                  </circle>
+                </svg>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         HOW IT WORKS SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section id="process" class="section section--alt">
+      <div class="container">
+        <!-- Header -->
+        <div style="margin-bottom: 4rem;">
+          <span class="section__eyebrow">How It Works</span>
+          <h2 class="section__title font-display" data-animate>
+            Simple process.<br>
+            <span style="color: var(--color-muted-foreground);">Stunning results.</span>
+          </h2>
+        </div>
+        
+        <!-- Process Grid -->
+        <div class="process__grid">
+          <!-- Steps -->
+          <div class="process__steps">
+            <button type="button" class="process__step process__step--active">
+              <div class="process__step-header">
+                <span class="process__step-number font-display">I</span>
+                <div class="process__step-content">
+                  <h3 class="process__step-title font-display">Share your vision</h3>
+                  <p class="process__step-description">Tell us about your project. Whether it&apos;s a portfolio, website, or custom software - we&apos;ll understand exactly what you need.</p>
+                  <div class="process__step-progress">
+                    <div class="process__step-progress-bar"></div>
+                  </div>
+                </div>
+              </div>
+            </button>
+            
+            <button type="button" class="process__step">
+              <div class="process__step-header">
+                <span class="process__step-number font-display">II</span>
+                <div class="process__step-content">
+                  <h3 class="process__step-title font-display">We build it</h3>
+                  <p class="process__step-description">Our team gets to work bringing your vision to life. Professional design, clean code, and attention to every detail.</p>
+                  <div class="process__step-progress">
+                    <div class="process__step-progress-bar"></div>
+                  </div>
+                </div>
+              </div>
+            </button>
+            
+            <button type="button" class="process__step">
+              <div class="process__step-header">
+                <span class="process__step-number font-display">III</span>
+                <div class="process__step-content">
+                  <h3 class="process__step-title font-display">You receive it</h3>
+                  <p class="process__step-description">Once complete, pay and receive your finished project. Full ownership, complete files, and ongoing support available.</p>
+                  <div class="process__step-progress">
+                    <div class="process__step-progress-bar"></div>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+          
+          <!-- Details Window -->
+          <div class="process__details">
+            <div class="process__window">
+              <div class="process__window-header">
+                <div class="process__window-controls">
+                  <button type="button" class="process__window-control process__window-control--close" aria-label="Close">
+                    <svg fill="none" stroke="#4A0002" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                  </button>
+                  <button type="button" class="process__window-control process__window-control--minimize" aria-label="Minimize">
+                    <svg fill="none" stroke="#995700" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M20 12H4"/>
+                    </svg>
+                  </button>
+                  <button type="button" class="process__window-control process__window-control--maximize" aria-label="Maximize">
+                    <svg fill="#006500" viewBox="0 0 24 24">
+                      <path d="M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zM6 14v4h4v2H4v-6h2zm12 0v4h-4v2h6v-6h-2z"/>
+                    </svg>
+                  </button>
+                </div>
+                <span class="process__window-step font-mono">step 1 of 3</span>
+              </div>
+              
+              <div class="process__window-body">
+                <h4 class="process__window-title text-gradient font-display">Share your vision</h4>
+                <ul class="process__window-list">
+                  <li class="process__window-item detail-line-reveal" style="animation-delay: 0ms">
+                    <span class="process__window-dot"><span class="process__window-dot-inner"></span></span>
+                    <span class="process__window-item-text">Fill out our booking form</span>
+                  </li>
+                  <li class="process__window-item detail-line-reveal" style="animation-delay: 100ms">
+                    <span class="process__window-dot"><span class="process__window-dot-inner"></span></span>
+                    <span class="process__window-item-text">Select your delivery timeline</span>
+                  </li>
+                  <li class="process__window-item detail-line-reveal" style="animation-delay: 200ms">
+                    <span class="process__window-dot"><span class="process__window-dot-inner"></span></span>
+                    <span class="process__window-item-text">Upload any references or assets</span>
+                  </li>
+                  <li class="process__window-item detail-line-reveal" style="animation-delay: 300ms">
+                    <span class="process__window-dot"><span class="process__window-dot-inner"></span></span>
+                    <span class="process__window-item-text">We&apos;ll confirm within 24 hours</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div class="process__window-footer">
+                <span class="process__window-status animate-pulse"></span>
+                <span class="process__window-status-text font-mono">Start your journey</span>
+              </div>
+            </div>
+            
+            <button type="button" class="process__restore">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"/>
+              </svg>
+              Click to restore window
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         INFRASTRUCTURE / WHAT WE BUILD SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="infrastructure__grid">
+          <!-- Left: Content -->
+          <div data-animate>
+            <span class="section__eyebrow">What We Build</span>
+            <h2 class="section__title font-display">
+              From idea to<br>
+              <span class="text-gradient">launch.</span>
+            </h2>
+            <p style="font-size: 1.25rem; color: var(--color-muted-foreground); line-height: 1.6; margin-bottom: 3rem;">
+              We build a wide range of digital products for students and professionals. 
+              From simple portfolios to complex web applications - we&apos;ve got you covered.
+            </p>
+            
+            <!-- Stats -->
+            <div class="infrastructure__stats">
+              <div>
+                <div class="infrastructure__stat-value text-gradient font-display">Next.js</div>
+                <div class="infrastructure__stat-label">Modern framework</div>
+              </div>
+              <div>
+                <div class="infrastructure__stat-value text-gradient font-display">Vercel</div>
+                <div class="infrastructure__stat-label">Fast hosting</div>
+              </div>
+              <div>
+                <div class="infrastructure__stat-value text-gradient font-display">React</div>
+                <div class="infrastructure__stat-label">Component based</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right: Project Types -->
+          <div class="infrastructure__projects" data-animate>
+            <div class="infrastructure__projects-header">
+              <span class="infrastructure__projects-title font-mono">Project Types</span>
+              <span class="infrastructure__projects-status font-mono">Accepting bookings</span>
+            </div>
+            
+            <div class="infrastructure__project infrastructure__project--active">
+              <div class="infrastructure__project-info">
+                <span class="infrastructure__project-dot"></span>
+                <div>
+                  <div class="infrastructure__project-name">Portfolio Website</div>
+                  <div class="infrastructure__project-features">5+ pages</div>
+                </div>
+              </div>
+              <span class="infrastructure__project-timeline font-mono">3-7 days</span>
+            </div>
+            
+            <div class="infrastructure__project">
+              <div class="infrastructure__project-info">
+                <span class="infrastructure__project-dot"></span>
+                <div>
+                  <div class="infrastructure__project-name">Landing Page</div>
+                  <div class="infrastructure__project-features">Single page</div>
+                </div>
+              </div>
+              <span class="infrastructure__project-timeline font-mono">2-5 days</span>
+            </div>
+            
+            <div class="infrastructure__project">
+              <div class="infrastructure__project-info">
+                <span class="infrastructure__project-dot"></span>
+                <div>
+                  <div class="infrastructure__project-name">Custom Web App</div>
+                  <div class="infrastructure__project-features">Full-stack</div>
+                </div>
+              </div>
+              <span class="infrastructure__project-timeline font-mono">2-4 weeks</span>
+            </div>
+            
+            <div class="infrastructure__project">
+              <div class="infrastructure__project-info">
+                <span class="infrastructure__project-dot"></span>
+                <div>
+                  <div class="infrastructure__project-name">E-commerce Site</div>
+                  <div class="infrastructure__project-features">Payments</div>
+                </div>
+              </div>
+              <span class="infrastructure__project-timeline font-mono">2-3 weeks</span>
+            </div>
+            
+            <div class="infrastructure__project">
+              <div class="infrastructure__project-info">
+                <span class="infrastructure__project-dot"></span>
+                <div>
+                  <div class="infrastructure__project-name">SaaS Dashboard</div>
+                  <div class="infrastructure__project-features">Complex UI</div>
+                </div>
+              </div>
+              <span class="infrastructure__project-timeline font-mono">3-6 weeks</span>
+            </div>
+            
+            <div class="infrastructure__project">
+              <div class="infrastructure__project-info">
+                <span class="infrastructure__project-dot"></span>
+                <div>
+                  <div class="infrastructure__project-name">Mobile-First Site</div>
+                  <div class="infrastructure__project-features">Responsive</div>
+                </div>
+              </div>
+              <span class="infrastructure__project-timeline font-mono">3-5 days</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════��═════════════════════════════════════���═
+         METRICS SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section class="section metrics">
+      <div class="container">
+        <!-- Header -->
+        <div class="metrics__header">
+          <div>
+            <span class="section__eyebrow">Our track record</span>
+            <h2 class="section__title font-display" data-animate>
+              Results that<br>speak for themselves.
+            </h2>
+          </div>
+          <span class="metrics__status font-mono">Taking new projects</span>
+        </div>
+        
+        <!-- Metrics Grid -->
+        <div class="metrics__grid">
+          <div class="metrics__item" data-animate>
+            <div class="metrics__value" data-count="50" data-suffix="+">
+              <span class="text-gradient">0+</span>
+            </div>
+            <div class="metrics__label">Projects delivered</div>
+          </div>
+          
+          <div class="metrics__item" data-animate>
+            <div class="metrics__value" data-count="100" data-suffix="%">
+              <span class="text-gradient">0%</span>
+            </div>
+            <div class="metrics__label">Client satisfaction</div>
+          </div>
+          
+          <div class="metrics__item" data-animate>
+            <div class="metrics__value" data-count="3" data-suffix=" days">
+              <span class="text-gradient">0 days</span>
+            </div>
+            <div class="metrics__label">Average delivery time</div>
+          </div>
+          
+          <div class="metrics__item" data-animate>
+            <div class="metrics__value" data-count="24" data-suffix="/7">
+              <span class="text-gradient">0/7</span>
+            </div>
+            <div class="metrics__label">Support availability</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         TESTIMONIALS SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section id="work" class="section testimonials">
+      <div class="container">
+        <!-- Section Label -->
+        <div class="testimonials__header">
+          <span class="testimonials__label font-mono">What clients say</span>
+          <div class="testimonials__divider"></div>
+          <span class="testimonials__counter font-mono">01 / 04</span>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="testimonials__grid">
+          <div>
+            <blockquote class="testimonials__quote">
+              &ldquo;EIXIMARA delivered my portfolio in just 3 days. It helped me land my dream internship within a month.&rdquo;
+            </blockquote>
+            
+            <div class="testimonials__author">
+              <div class="testimonials__avatar">
+                <span class="testimonials__avatar-initial font-display">P</span>
+              </div>
+              <div>
+                <p class="testimonials__author-name">Priya Sharma</p>
+                <p class="testimonials__author-role">Computer Science Student, IIT Delhi</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="testimonials__metric">
+            <div class="testimonials__metric-card">
+              <span class="testimonials__metric-label font-mono">Key Result</span>
+              <p class="testimonials__metric-value text-gradient font-display">Landed internship in 30 days</p>
+            </div>
+            
+            <div class="testimonials__dots">
+              <button class="testimonials__dot testimonials__dot--active" aria-label="Testimonial 1"></button>
+              <button class="testimonials__dot" aria-label="Testimonial 2"></button>
+              <button class="testimonials__dot" aria-label="Testimonial 3"></button>
+              <button class="testimonials__dot" aria-label="Testimonial 4"></button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Client Types -->
+        <div class="testimonials__clients">
+          <p class="testimonials__clients-label font-mono">Trusted by students and professionals</p>
+        </div>
+      </div>
+      
+      <!-- Full-width marquee -->
+      <div class="testimonials__clients-track marquee">
+        <span class="testimonials__client font-display">IIT Students</span>
+        <span class="testimonials__client font-display">MBA Graduates</span>
+        <span class="testimonials__client font-display">Tech Professionals</span>
+        <span class="testimonials__client font-display">Designers</span>
+        <span class="testimonials__client font-display">Entrepreneurs</span>
+        <span class="testimonials__client font-display">Freelancers</span>
+        <span class="testimonials__client font-display">Consultants</span>
+        <span class="testimonials__client font-display">Engineers</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="testimonials__client font-display">IIT Students</span>
+        <span class="testimonials__client font-display">MBA Graduates</span>
+        <span class="testimonials__client font-display">Tech Professionals</span>
+        <span class="testimonials__client font-display">Designers</span>
+        <span class="testimonials__client font-display">Entrepreneurs</span>
+        <span class="testimonials__client font-display">Freelancers</span>
+        <span class="testimonials__client font-display">Consultants</span>
+        <span class="testimonials__client font-display">Engineers</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         INTEGRATIONS / TECH STACK SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section class="section">
+      <div class="container">
+        <!-- Header -->
+        <div class="integrations__header" data-animate>
+          <span class="integrations__eyebrow font-mono">Tech Stack</span>
+          <h2 class="section__title font-display">
+            Built with modern<br>
+            <span class="text-gradient">technologies.</span>
+          </h2>
+          <p class="integrations__description">
+            We use the latest tools and frameworks to build fast, scalable, and maintainable solutions.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Full-width marquees -->
+      <div class="integrations__track-wrapper">
+        <div class="integrations__track marquee">
+          <div class="integrations__item"><div class="integrations__item-name">Next.js</div><div class="integrations__item-category">Framework</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">React</div><div class="integrations__item-category">UI Library</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">TypeScript</div><div class="integrations__item-category">Language</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Tailwind CSS</div><div class="integrations__item-category">Styling</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Vercel</div><div class="integrations__item-category">Hosting</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Supabase</div><div class="integrations__item-category">Database</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Stripe</div><div class="integrations__item-category">Payments</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Framer Motion</div><div class="integrations__item-category">Animations</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">shadcn/ui</div><div class="integrations__item-category">Components</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Prisma</div><div class="integrations__item-category">ORM</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">GitHub</div><div class="integrations__item-category">Version Control</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Figma</div><div class="integrations__item-category">Design</div></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="integrations__item"><div class="integrations__item-name">Next.js</div><div class="integrations__item-category">Framework</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">React</div><div class="integrations__item-category">UI Library</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">TypeScript</div><div class="integrations__item-category">Language</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Tailwind CSS</div><div class="integrations__item-category">Styling</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Vercel</div><div class="integrations__item-category">Hosting</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Supabase</div><div class="integrations__item-category">Database</div></div>
+        </div>
+      </div>
+      
+      <div class="integrations__track-wrapper">
+        <div class="integrations__track marquee-reverse">
+          <div class="integrations__item"><div class="integrations__item-name">Figma</div><div class="integrations__item-category">Design</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">GitHub</div><div class="integrations__item-category">Version Control</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Prisma</div><div class="integrations__item-category">ORM</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">shadcn/ui</div><div class="integrations__item-category">Components</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Framer Motion</div><div class="integrations__item-category">Animations</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Stripe</div><div class="integrations__item-category">Payments</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Supabase</div><div class="integrations__item-category">Database</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Vercel</div><div class="integrations__item-category">Hosting</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Tailwind CSS</div><div class="integrations__item-category">Styling</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">TypeScript</div><div class="integrations__item-category">Language</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">React</div><div class="integrations__item-category">UI Library</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Next.js</div><div class="integrations__item-category">Framework</div></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="integrations__item"><div class="integrations__item-name">Figma</div><div class="integrations__item-category">Design</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">GitHub</div><div class="integrations__item-category">Version Control</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Prisma</div><div class="integrations__item-category">ORM</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">shadcn/ui</div><div class="integrations__item-category">Components</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Framer Motion</div><div class="integrations__item-category">Animations</div></div>
+          <div class="integrations__item"><div class="integrations__item-name">Stripe</div><div class="integrations__item-category">Payments</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         SECURITY / TRUST SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="security__grid">
+          <!-- Left: Content -->
+          <div data-animate>
+            <span class="section__eyebrow">Trust & Security</span>
+            <h2 class="section__title font-display">
+              Your success<br>
+              <span class="text-gradient">is guaranteed.</span>
+            </h2>
+            <p style="font-size: 1.25rem; color: var(--color-muted-foreground); line-height: 1.6;">
+              We believe in our work. That&apos;s why you only pay after seeing your completed 
+              project. No risks, no surprises - just quality results.
+            </p>
+            
+            <!-- Guarantees -->
+            <div class="security__guarantees">
+              <span class="security__guarantee">100% Satisfaction</span>
+              <span class="security__guarantee">Money Back</span>
+              <span class="security__guarantee">Full Ownership</span>
+              <span class="security__guarantee">Ongoing Support</span>
+              <span class="security__guarantee">Fast Response</span>
+            </div>
+          </div>
+          
+          <!-- Right: Features -->
+          <div class="security__features">
+            <div class="security__feature" data-animate>
+              <div class="security__feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="security__feature-title">Pay after completion</h3>
+                <p class="security__feature-description">See your finished project before making any payment. Full transparency.</p>
+              </div>
+            </div>
+            
+            <div class="security__feature" data-animate>
+              <div class="security__feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="security__feature-title">Secure delivery</h3>
+                <p class="security__feature-description">All project files delivered securely via email with full documentation.</p>
+              </div>
+            </div>
+            
+            <div class="security__feature" data-animate>
+              <div class="security__feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="security__feature-title">Full ownership</h3>
+                <p class="security__feature-description">You own 100% of the code and design. No hidden fees or royalties.</p>
+              </div>
+            </div>
+            
+            <div class="security__feature" data-animate>
+              <div class="security__feature-icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="security__feature-title">Transparent pricing</h3>
+                <p class="security__feature-description">Clear upfront pricing. No surprise charges or scope creep costs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         PRICING SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section id="pricing" class="section pricing">
+      <div class="container">
+        <!-- Header -->
+        <div class="pricing__header">
+          <span class="section__eyebrow">Pricing</span>
+          <h2 class="section__title font-display">
+            Transparent<br>
+            <span class="text-gradient">pricing</span>
+          </h2>
+          <p style="font-size: 1.125rem; color: var(--color-muted-foreground);">
+            Choose your project type and delivery speed. Pay only after you see the finished product.
+          </p>
+        </div>
+        
+        <!-- Project Type Selector -->
+        <div class="pricing__projects">
+          <h3 class="pricing__projects-label font-mono">Project Type</h3>
+          <div class="pricing__projects-list">
+            <button class="pricing__project-btn pricing__project-btn--active">Portfolio Website<span class="pricing__project-price">from $299</span></button>
+            <button class="pricing__project-btn">Landing Page<span class="pricing__project-price">from $199</span></button>
+            <button class="pricing__project-btn">Custom Web App<span class="pricing__project-price">from $999</span></button>
+            <button class="pricing__project-btn">E-commerce Site<span class="pricing__project-price">from $799</span></button>
+          </div>
+        </div>
+        
+        <!-- Delivery Tier Cards -->
+        <div class="pricing__tiers">
+          <!-- Express -->
+          <button class="pricing__tier">
+            <span class="pricing__tier-badge pricing__tier-badge--limited">Limited Slots</span>
+            <div class="pricing__tier-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="pricing__tier-name font-display">Express</h3>
+            <p class="pricing__tier-timeline font-mono">1-3 Days</p>
+            <p class="pricing__tier-description">For urgent projects that need immediate attention</p>
+            <div class="pricing__tier-price">
+              <span class="pricing__tier-amount font-display">$478</span>
+              <span class="pricing__tier-currency">USD</span>
+            </div>
+            <ul class="pricing__tier-features">
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Highest priority queue</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Daily progress updates</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Rush delivery guaranteed</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Direct communication channel</span>
+              </li>
+            </ul>
+            <div class="pricing__tier-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+          </button>
+          
+          <!-- Priority -->
+          <button class="pricing__tier pricing__tier--popular">
+            <div class="pricing__tier-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+              </svg>
+            </div>
+            <h3 class="pricing__tier-name font-display">Priority</h3>
+            <p class="pricing__tier-timeline font-mono">4-7 Days</p>
+            <p class="pricing__tier-description">Fast delivery with balanced attention to detail</p>
+            <div class="pricing__tier-price">
+              <span class="pricing__tier-amount font-display">$389</span>
+              <span class="pricing__tier-currency">USD</span>
+            </div>
+            <ul class="pricing__tier-features">
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>High priority queue</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Regular progress updates</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Quick turnaround</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Email support</span>
+              </li>
+            </ul>
+            <div class="pricing__tier-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+          </button>
+          
+          <!-- Standard -->
+          <button class="pricing__tier pricing__tier--selected">
+            <span class="pricing__tier-badge pricing__tier-badge--popular">Most Popular</span>
+            <div class="pricing__tier-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="pricing__tier-name font-display">Standard</h3>
+            <p class="pricing__tier-timeline font-mono">1-2 Weeks</p>
+            <p class="pricing__tier-description">Our recommended option for most projects</p>
+            <div class="pricing__tier-price">
+              <span class="pricing__tier-amount font-display">$299</span>
+              <span class="pricing__tier-currency">USD</span>
+            </div>
+            <ul class="pricing__tier-features">
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Standard queue</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Weekly updates</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Best value option</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Email support</span>
+              </li>
+            </ul>
+            <div class="pricing__tier-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+          </button>
+          
+          <!-- Flexible -->
+          <button class="pricing__tier">
+            <span class="pricing__tier-badge pricing__tier-badge--discount">Save 10%</span>
+            <div class="pricing__tier-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+              </svg>
+            </div>
+            <h3 class="pricing__tier-name font-display">Flexible</h3>
+            <p class="pricing__tier-timeline font-mono">2-3 Weeks</p>
+            <p class="pricing__tier-description">Budget-friendly option with flexible scheduling</p>
+            <div class="pricing__tier-price">
+              <span class="pricing__tier-amount font-display">$269</span>
+              <span class="pricing__tier-currency">USD</span>
+            </div>
+            <ul class="pricing__tier-features">
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Flexible scheduling</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Milestone updates</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>10% discount applied</span>
+              </li>
+              <li class="pricing__tier-feature">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Email support</span>
+              </li>
+            </ul>
+            <div class="pricing__tier-check">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            </div>
+          </button>
+        </div>
+        
+        <!-- Summary -->
+        <div class="pricing__summary">
+          <div class="pricing__summary-inner">
+            <div>
+              <p class="pricing__summary-label">Your selection:</p>
+              <p class="pricing__summary-selection font-display">Portfolio Website with Standard delivery</p>
+              <p class="pricing__summary-delivery">Estimated delivery: 1-2 Weeks</p>
+            </div>
+            
+            <div class="pricing__summary-actions">
+              <div class="pricing__summary-total">
+                <p class="pricing__summary-total-label">Total price</p>
+                <p class="pricing__summary-total-value text-gradient font-display">$299</p>
+              </div>
+              
+              <a href="book.html" class="btn btn--primary btn--lg hover-glow">
+                Book this project
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Note -->
+        <p class="pricing__note">
+          Payment is collected only after project completion. Full satisfaction guaranteed.
+          <a href="#contact">Questions? Contact us</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         FAQ / DEVELOPERS SECTION
+         ══════════════════════════════════════════���════════ -->
+    <section class="section">
+      <div class="container">
+        <div class="faq__grid">
+          <!-- Left: FAQ -->
+          <div data-animate>
+            <span class="section__eyebrow">Common questions</span>
+            <h2 class="section__title font-display">
+              Got questions?<br>
+              <span style="color: var(--color-muted-foreground);">We&apos;ve got answers.</span>
+            </h2>
+            
+            <!-- FAQ List -->
+            <div class="faq__list">
+              <div class="faq__item faq__item--open">
+                <button class="faq__question">
+                  <span>How do I start a project?</span>
+                  <span class="faq__toggle">+</span>
+                </button>
+                <div class="faq__answer">
+                  <p class="faq__answer-text">Simply fill out our booking form with your project details, select your preferred delivery timeline, and we&apos;ll confirm your project within 24 hours. No commitment required until you&apos;re ready.</p>
+                </div>
+              </div>
+              
+              <div class="faq__item">
+                <button class="faq__question">
+                  <span>When do I pay?</span>
+                  <span class="faq__toggle">+</span>
+                </button>
+                <div class="faq__answer">
+                  <p class="faq__answer-text">You only pay after seeing your completed project. We believe in our work - that&apos;s why payment is collected only after you&apos;re satisfied with the final result.</p>
+                </div>
+              </div>
+              
+              <div class="faq__item">
+                <button class="faq__question">
+                  <span>What&apos;s included in delivery?</span>
+                  <span class="faq__toggle">+</span>
+                </button>
+                <div class="faq__answer">
+                  <p class="faq__answer-text">You receive the live website link, full GitHub repository access, complete source code, and documentation. You own 100% of everything we build.</p>
+                </div>
+              </div>
+              
+              <div class="faq__item">
+                <button class="faq__question">
+                  <span>Do you offer support after delivery?</span>
+                  <span class="faq__toggle">+</span>
+                </button>
+                <div class="faq__answer">
+                  <p class="faq__answer-text">Yes! We provide ongoing support via email or phone for bug fixes, minor updates, and general queries. Extended support packages are also available.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Right: Contact -->
+          <div class="faq__contact" data-animate>
+            <div class="faq__contact-card">
+              <h3 class="faq__contact-title font-display">Need more help?</h3>
+              <p class="faq__contact-description">Reach out to us through any of these channels.</p>
+              
+              <div class="faq__contact-methods">
+                <a href="mailto:hello@eiximara.com" class="faq__contact-method">
+                  <div class="faq__contact-method-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                  </div>
+                  <div class="faq__contact-method-info">
+                    <div class="faq__contact-method-title">Email us</div>
+                    <div class="faq__contact-method-description">Get in touch anytime</div>
+                  </div>
+                  <span class="faq__contact-method-value font-mono">hello@eiximara.com</span>
+                </a>
+                
+                <a href="tel:+919876543210" class="faq__contact-method">
+                  <div class="faq__contact-method-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                  </div>
+                  <div class="faq__contact-method-info">
+                    <div class="faq__contact-method-title">Call us</div>
+                    <div class="faq__contact-method-description">Mon-Fri, 9am-6pm IST</div>
+                  </div>
+                  <span class="faq__contact-method-value font-mono">+91 98765 43210</span>
+                </a>
+                
+                <a href="#" class="faq__contact-method">
+                  <div class="faq__contact-method-icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                  </div>
+                  <div class="faq__contact-method-info">
+                    <div class="faq__contact-method-title">WhatsApp</div>
+                    <div class="faq__contact-method-description">Quick responses</div>
+                  </div>
+                  <span class="faq__contact-method-value font-mono">Chat now</span>
+                </a>
+              </div>
+            </div>
+            
+            <p class="faq__response-time">
+              Average response time: <span>under 2 hours</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════
+         CTA SECTION
+         ═══════════════════════════════════════════════════ -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="cta__card" data-animate>
+          <div class="cta__spotlight"></div>
+          
+          <div class="cta__corner cta__corner--top"></div>
+          <div class="cta__corner cta__corner--bottom"></div>
+          
+          <div class="cta__content">
+            <div class="cta__inner">
+              <!-- Left Content -->
+              <div class="cta__text">
+                <span class="section__eyebrow">Get in touch</span>
+                
+                <h2 class="cta__title font-display">
+                  Ready to build<br>
+                  <span class="text-gradient">something great?</span>
+                </h2>
+                
+                <p class="cta__description">
+                  Let&apos;s create a portfolio or software that truly represents you. 
+                  Start with a conversation - no commitment required.
+                </p>
+                
+                <div class="cta__actions">
+                  <a href="book.html" class="btn btn--primary btn--lg hover-glow">
+                    Book your project
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                  </a>
+                  <a href="#work" class="btn btn--outline btn--lg">View our work</a>
+                </div>
+                
+                <div class="cta__contact">
+                  <a href="mailto:hello@eiximara.com" class="cta__contact-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span class="font-mono">hello@eiximara.com</span>
+                  </a>
+                  <a href="tel:+919876543210" class="cta__contact-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    <span class="font-mono">+91 98765 43210</span>
+                  </a>
+                </div>
+              </div>
+              
+              <!-- Right Animation -->
+              <div class="cta__canvas">
+                <canvas id="tetrahedron-canvas" style="width: 100%; height: 100%;"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <!-- Wave Background -->
+    <div class="footer__wave">
+      <canvas id="wave-canvas" style="width: 100%; height: 100%;"></canvas>
+    </div>
+    
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__grid">
+          <!-- Brand Column -->
+          <div class="footer__brand">
+            <a href="#" class="footer__logo text-gradient font-display">EIXIMARA</a>
+            <p class="footer__tagline">
+              Premium portfolio websites and custom software solutions for students and professionals. Build your digital presence with us.
+            </p>
+            
+            <div class="footer__social">
+              <a href="#" class="footer__social-link">
+                Twitter
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+              <a href="#" class="footer__social-link">
+                GitHub
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+              <a href="#" class="footer__social-link">
+                LinkedIn
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+              <a href="#" class="footer__social-link">
+                Instagram
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Services -->
+          <div>
+            <h3 class="footer__links-title">Services</h3>
+            <ul class="footer__links-list">
+              <li><a href="#services" class="footer__link">Portfolio Websites</a></li>
+              <li><a href="#services" class="footer__link">Custom Software</a></li>
+              <li><a href="#services" class="footer__link">Personal Branding</a></li>
+              <li><a href="#services" class="footer__link">Support & Maintenance</a></li>
+            </ul>
+          </div>
+          
+          <!-- Company -->
+          <div>
+            <h3 class="footer__links-title">Company</h3>
+            <ul class="footer__links-list">
+              <li><a href="#" class="footer__link">About Us</a></li>
+              <li><a href="#process" class="footer__link">Our Process</a></li>
+              <li><a href="#pricing" class="footer__link">Pricing</a></li>
+              <li><a href="#contact" class="footer__link">Contact</a></li>
+            </ul>
+          </div>
+          
+          <!-- Resources -->
+          <div>
+            <h3 class="footer__links-title">Resources</h3>
+            <ul class="footer__links-list">
+              <li><a href="#" class="footer__link">Client Dashboard <span class="footer__link-badge footer__link-badge--secondary">Login</span></a></li>
+              <li><a href="#" class="footer__link">FAQ</a></li>
+              <li><a href="#" class="footer__link">Blog</a></li>
+              <li><a href="#" class="footer__link">Careers <span class="footer__link-badge footer__link-badge--primary">Hiring</span></a></li>
+            </ul>
+          </div>
+          
+          <!-- Legal -->
+          <div>
+            <h3 class="footer__links-title">Legal</h3>
+            <ul class="footer__links-list">
+              <li><a href="#" class="footer__link">Privacy Policy</a></li>
+              <li><a href="#" class="footer__link">Terms of Service</a></li>
+              <li><a href="#" class="footer__link">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Bottom Bar -->
+      <div class="footer__bottom">
+        <p class="footer__copyright">2025 EIXIMARA. All rights reserved.</p>
+        <span class="footer__status">Available for new projects</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>

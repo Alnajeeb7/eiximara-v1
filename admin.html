@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EIXIMARA Admin Panel - Manage projects and payments.">
+  <meta name="theme-color" content="#F2FAF6">
+  <title>Admin Panel - EIXIMARA</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="admin">
+    <!-- Sidebar -->
+    <aside class="dashboard__sidebar admin__sidebar">
+      <div class="dashboard__sidebar-header">
+        <a href="index.html" class="nav__logo text-gradient font-display">EIXIMARA</a>
+        <span class="admin__badge">Admin</span>
+      </div>
+      
+      <nav class="dashboard__nav">
+        <a href="#projects" class="dashboard__nav-item dashboard__nav-item--active" data-section="projects">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+          </svg>
+          <span>Projects</span>
+        </a>
+        <a href="#payments" class="dashboard__nav-item" data-section="payments">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+          </svg>
+          <span>Payments</span>
+          <span class="dashboard__nav-badge" id="pending-payments">1</span>
+        </a>
+        <a href="#messages" class="dashboard__nav-item" data-section="messages">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+          </svg>
+          <span>Messages & Inbox</span>
+        </a>
+        <a href="#delivery" class="dashboard__nav-item" data-section="delivery">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+          </svg>
+          <span>Deliver Project</span>
+        </a>
+      </nav>
+      
+      <div class="dashboard__sidebar-footer" style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <a href="index.html" class="btn btn--ghost btn--sm">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+          </svg>
+          Back to Site
+        </a>
+        <button type="button" class="btn btn--ghost btn--sm" id="admin-logout" style="color: var(--color-destructive);">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+          </svg>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- Mobile Header -->
+    <header class="dashboard__mobile-header">
+      <a href="index.html" class="nav__logo text-gradient font-display">EIXIMARA</a>
+      <div class="admin__mobile-badge">Admin</div>
+      <button type="button" class="dashboard__menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard__main admin__main">
+      <!-- Projects Section -->
+      <section id="projects" class="dashboard__section dashboard__section--active">
+        <div class="dashboard__section-header">
+          <h1 class="dashboard__section-title font-display">All Projects</h1>
+          <p class="dashboard__section-subtitle">Manage and update project status</p>
+        </div>
+
+        <div class="admin__projects" id="projects-list">
+          <!-- Projects will be populated by JS -->
+        </div>
+      </section>
+
+      <!-- Payments Section -->
+      <section id="payments" class="dashboard__section">
+        <div class="dashboard__section-header">
+          <h1 class="dashboard__section-title font-display">Payment Verification</h1>
+          <p class="dashboard__section-subtitle">Review and verify user payments</p>
+        </div>
+
+        <div class="admin__payments" id="payments-list">
+          <!-- Payments will be populated by JS -->
+        </div>
+      </section>
+
+      <!-- Messenger & Admin Power Tools Section -->
+      <section id="messages" class="dashboard__section">
+        <div class="dashboard__section-header">
+          <h1 class="dashboard__section-title font-display">Messenger Workspace</h1>
+          <p class="dashboard__section-subtitle">Manage client conversations and project progress in one place</p>
+        </div>
+
+        <div class="chat-system messenger admin-messenger">
+          <!-- Sidebar: Conversations -->
+          <div class="messenger__sidebar">
+            <div class="messenger__sidebar-header">
+              <h3 class="admin__subtitle font-display">Conversations</h3>
+            </div>
+            <div class="messenger__inbox" id="admin-messenger-inbox">
+              <!-- Conversations loaded by JS -->
+            </div>
+          </div>
+
+          <!-- Main Chat Area -->
+          <div class="messenger__chat">
+            <div id="active-chat-header" class="chat__header" style="display: none;">
+              <div class="chat__user-info">
+                <div class="chat__user-avatar" id="active-chat-avatar">U</div>
+                <div class="chat__user-details">
+                  <span class="chat__user-name" id="active-chat-name">Select a conversation</span>
+                  <span class="chat__user-status" id="active-chat-project">No project selected</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat__messages" id="admin-chat-scroll">
+              <div class="messenger__empty">
+                <div class="messenger__empty-icon"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg></div>
+                <p>Select a message from the left to start chatting with your client.</p>
+              </div>
+            </div>
+
+            <div class="chat__input-container" id="admin-chat-input-area" style="display: none;">
+              <form id="admin-chat-form" class="chat__input-wrapper">
+                <textarea id="admin-chat-textarea" class="chat__textarea" placeholder="Type your message..." rows="1"></textarea>
+                <button type="submit" id="admin-chat-send-btn" class="chat__send-btn">
+                  <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                  </svg>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Power Tools Sidebar -->
+          <div class="chat__tools" id="admin-chat-tools" style="display: none;">
+            <div class="chat__tools-header shadow-sm">Power Tools</div>
+            <div class="chat__tools-content">
+              <div class="chat__tool-group">
+                <span class="chat__tool-label">Quick Status Update</span>
+                <div class="chat__template-list">
+                  <button class="chat__template-item" onclick="window.quickUpdateStatus('in_progress')">Set: In Progress</button>
+                  <button class="chat__template-item" onclick="window.quickUpdateStatus('review')">Set: Under Review</button>
+                  <button class="chat__template-item" onclick="window.quickUpdateStatus('completed')">Set: Completed</button>
+                </div>
+              </div>
+              
+              <div class="chat__tool-group" id="verify-tool" style="display: none;">
+                <span class="chat__tool-label">Payment Control</span>
+                <button class="btn btn--accent btn--sm" onclick="window.quickVerifyPayment()">Verify Payment Now</button>
+              </div>
+
+              <div class="chat__tool-group">
+                <span class="chat__tool-label">Canned Responses</span>
+                <div class="chat__template-list">
+                  <button class="chat__template-item" onclick="window.useTemplate('Welcome aboard! We are excited to start working on your project.')">Welcome Aboard</button>
+                  <button class="chat__template-item" onclick="window.useTemplate('I have received your payment details. Give me a few moments to verify it.')">Verifying Payment</button>
+                  <button class="chat__template-item" onclick="window.useTemplate('Great news! Your project has moved into the review phase. You can check it on the live URL.')">Move to Review</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Deliver Project Section -->
+      <section id="delivery" class="dashboard__section">
+        <div class="dashboard__section-header">
+          <h1 class="dashboard__section-title font-display">Deliver Project</h1>
+          <p class="dashboard__section-subtitle">Provide project URL and transfer GitHub repository</p>
+        </div>
+
+        <div class="admin__delivery-form card">
+          <form id="delivery-form">
+            <div class="admin__field">
+              <label for="delivery-project" class="label">Select Project</label>
+              <select id="delivery-project" class="input input--lg" required>
+                <option value="">Choose a project...</option>
+              </select>
+            </div>
+            
+            <div class="admin__field">
+              <label for="project-url" class="label">Live Project URL</label>
+              <input type="url" id="project-url" class="input input--lg" placeholder="https://example.com" required>
+              <p class="admin__field-hint">The URL where the user can view their live website</p>
+            </div>
+
+            <div class="admin__field">
+              <label for="github-url" class="label">GitHub Repository URL</label>
+              <input type="url" id="github-url" class="input input--lg" placeholder="https://github.com/username/repo" required>
+              <p class="admin__field-hint">The repository will be transferred to the user</p>
+            </div>
+
+            <div class="admin__actions">
+              <button type="submit" class="btn btn--primary btn--lg hover-glow">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                </svg>
+                Deliver Project
+              </button>
+              
+              <button type="button" class="btn btn--outline btn--lg" id="transfer-repo-btn">
+                <svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                Transfer GitHub Repo
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Transfer Status -->
+        <div class="admin__transfer-status card" id="transfer-status" style="display: none;">
+          <div class="admin__transfer-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <h3 class="admin__transfer-title font-display">Repository Transferred</h3>
+          <p class="admin__transfer-text">The GitHub repository has been successfully transferred to the user.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      'use strict';
+      
+      // Check authentication and admin role
+      if (!API.isLoggedIn()) {
+        window.location.href = 'auth.html';
+        return;
+      }
+      
+      if (!API.isAdmin()) {
+        window.location.href = 'dashboard.html';
+        return;
+      }
+      
+      let projects = [];
+      
+      // DOM Elements
+      const sidebar = document.querySelector('.dashboard__sidebar');
+      const menuToggle = document.getElementById('menu-toggle');
+      const navItems = document.querySelectorAll('.dashboard__nav-item');
+      const sections = document.querySelectorAll('.dashboard__section');
+      const messageForm = document.getElementById('message-form');
+      const deliveryForm = document.getElementById('delivery-form');
+      const transferRepoBtn = document.getElementById('transfer-repo-btn');
+      
+      // Load data
+      await loadData();
+      
+      async function loadData() {
+        try {
+          projects = await API.getProjects();
+          updateProjectsList();
+          updatePaymentsList();
+          populateProjectSelects();
+          await loadAdminMessages();
+        } catch (error) {
+          console.error('Error loading data:', error);
+          alert('Error loading data: ' + error.message);
+        }
+      }
+      
+      function updateProjectsList() {
+        const projectsList = document.getElementById('projects-list');
+        
+        if (projects.length === 0) {
+          projectsList.innerHTML = '<div class="admin__empty">' +
+            '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="48" height="48">' +
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>' +
+            '</svg>' +
+            '<p>No projects yet</p>' +
+          '</div>';
+          return;
+        }
+        
+        const statusOptions = [
+          { value: 'pending', label: 'Pending' },
+          { value: 'in_progress', label: 'In Progress' },
+          { value: 'review', label: 'Under Review' },
+          { value: 'completed', label: 'Completed' }
+        ];
+        
+        projectsList.innerHTML = projects.map(function(project) {
+          return '<div class="admin__project-card card">' +
+            '<div class="admin__project-header">' +
+              '<div class="admin__project-info">' +
+                '<h3 class="admin__project-title font-display">' + (project.projectType || 'Project') + '</h3>' +
+                '<p class="admin__project-id font-mono">ID: ' + project.id + '</p>' +
+              '</div>' +
+              '<span class="admin__project-badge admin__project-badge--' + project.status + '">' + 
+                (statusOptions.find(function(s) { return s.value === project.status; }) || { label: 'Unknown' }).label + 
+              '</span>' +
+            '</div>' +
+            '<div class="admin__project-details">' +
+              '<div class="admin__project-detail">' +
+                '<span class="admin__project-label">Client</span>' +
+                '<span class="admin__project-value">' + (project.userName || 'Unknown') + '</span>' +
+              '</div>' +
+              '<div class="admin__project-detail">' +
+                '<span class="admin__project-label">Email</span>' +
+                '<span class="admin__project-value">' + (project.userEmail || 'N/A') + '</span>' +
+              '</div>' +
+              '<div class="admin__project-detail">' +
+                '<span class="admin__project-label">Budget</span>' +
+                '<span class="admin__project-value">' + (project.budget || 'N/A') + '</span>' +
+              '</div>' +
+              '<div class="admin__project-detail">' +
+                '<span class="admin__project-label">Payment</span>' +
+                '<span class="admin__project-value admin__project-value--' + project.paymentStatus + '">' + 
+                  (project.paymentStatus ? project.paymentStatus.charAt(0).toUpperCase() + project.paymentStatus.slice(1) : 'Pending') + 
+                '</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="admin__project-actions">' +
+              '<div class="admin__field admin__field--inline">' +
+                '<label class="label">Status</label>' +
+                '<select class="input" data-project-id="' + project.id + '" data-action="status">' +
+                  statusOptions.map(function(opt) {
+                    return '<option value="' + opt.value + '"' + (opt.value === project.status ? ' selected' : '') + '>' + opt.label + '</option>';
+                  }).join('') +
+                '</select>' +
+              '</div>' +
+              '<div class="admin__field admin__field--inline">' +
+                '<label class="label">Progress</label>' +
+                '<input type="number" class="input" min="0" max="100" value="' + (project.progress || 0) + '" ' +
+                       'data-project-id="' + project.id + '" data-action="progress">' +
+              '</div>' +
+              '<div class="admin__field admin__field--inline">' +
+                '<label class="label">Amount ($)</label>' +
+                '<input type="number" class="input" min="0" value="' + (project.paymentAmount || 0) + '" ' +
+                       'data-project-id="' + project.id + '" data-action="amount">' +
+              '</div>' +
+              '<button type="button" class="btn btn--primary btn--sm" data-project-id="' + project.id + '" data-action="update">' +
+                'Update' +
+              '</button>' +
+            '</div>' +
+          '</div>';
+        }).join('');
+        
+        // Attach event listeners
+        document.querySelectorAll('[data-action="update"]').forEach(function(btn) {
+          btn.addEventListener('click', async function() {
+            const projectId = this.dataset.projectId;
+            const statusSelect = document.querySelector('[data-project-id="' + projectId + '"][data-action="status"]');
+            const progressInput = document.querySelector('[data-project-id="' + projectId + '"][data-action="progress"]');
+            const amountInput = document.querySelector('[data-project-id="' + projectId + '"][data-action="amount"]');
+            
+            this.disabled = true;
+            this.textContent = 'Updating...';
+            
+            try {
+              await API.updateProjectStatus(projectId, statusSelect.value, parseInt(progressInput.value, 10));
+              await API.setPaymentAmount(projectId, parseFloat(amountInput.value));
+              await loadData();
+              alert('Project updated successfully!');
+            } catch (error) {
+              alert('Error updating project: ' + error.message);
+              this.disabled = false;
+              this.textContent = 'Update';
+            }
+          });
+        });
+      }
+      
+      function updatePaymentsList() {
+        const paymentsList = document.getElementById('payments-list');
+        const pendingBadge = document.getElementById('pending-payments');
+        
+        const projectsWithPayments = projects.filter(function(p) { return p.paymentStatus === 'submitted' || p.paymentUrl; });
+        const pendingCount = projects.filter(function(p) { return p.paymentStatus === 'submitted'; }).length;
+        
+        pendingBadge.textContent = pendingCount;
+        pendingBadge.style.display = pendingCount > 0 ? 'flex' : 'none';
+        
+        if (projectsWithPayments.length === 0) {
+          paymentsList.innerHTML = '<div class="admin__empty">' +
+            '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="48" height="48">' +
+              '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>' +
+            '</svg>' +
+            '<p>No pending payments to verify</p>' +
+          '</div>';
+          return;
+        }
+        
+        paymentsList.innerHTML = projectsWithPayments.map(function(project) {
+          return '<div class="admin__payment-card card">' +
+            '<div class="admin__payment-header">' +
+              '<div class="admin__payment-info">' +
+                '<h3 class="admin__payment-title font-display">' + (project.userName || 'Unknown') + '</h3>' +
+                '<p class="admin__payment-id font-mono">ID: ' + project.id + '</p>' +
+              '</div>' +
+              '<span class="admin__payment-badge admin__payment-badge--' + project.paymentStatus + '">' + 
+                (project.paymentStatus === 'submitted' ? 'Pending Verification' : 'Verified') + 
+              '</span>' +
+            '</div>' +
+            '<div class="admin__payment-details">' +
+              '<div class="admin__payment-detail">' +
+                '<span class="admin__payment-label">Amount</span>' +
+                '<span class="admin__payment-value text-gradient">$' + (project.paymentAmount || 0).toLocaleString() + '</span>' +
+              '</div>' +
+              '<div class="admin__payment-detail">' +
+                '<span class="admin__payment-label">Payment URL/ID</span>' +
+                '<a href="' + (project.paymentUrl || '#') + '" target="_blank" class="admin__payment-link">' + 
+                  (project.paymentUrl || 'Not provided') + 
+                '</a>' +
+              '</div>' +
+            '</div>' +
+            (project.paymentStatus === 'submitted' ? 
+              '<div class="admin__payment-actions">' +
+                '<button type="button" class="btn btn--primary btn--sm hover-glow" data-project-id="' + project.id + '" data-action="verify">' +
+                  '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">' +
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>' +
+                  '</svg>' +
+                  'Verify Payment' +
+                '</button>' +
+              '</div>' : '') +
+          '</div>';
+        }).join('');
+        
+        // Attach event listeners
+        document.querySelectorAll('[data-action="verify"]').forEach(function(btn) {
+          btn.addEventListener('click', async function() {
+            const projectId = this.dataset.projectId;
+            this.disabled = true;
+            this.innerHTML = 'Verifying...';
+            
+            try {
+              await API.verifyPayment(projectId);
+              await loadData();
+              alert('Payment verified successfully!');
+            } catch (error) {
+              alert('Error verifying payment: ' + error.message);
+              this.disabled = false;
+              this.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Verify Payment';
+            }
+          });
+        });
+      }
+      
+      let activeProjectId = null;
+      let allMessages = [];
+
+      async function loadAdminMessages() {
+        try {
+          allMessages = await API.getMessages();
+          renderMessengerInbox();
+          if (activeProjectId) {
+            renderActiveConversation();
+          }
+        } catch (error) {
+          console.error('Error loading messages:', error);
+        }
+      }
+      
+      function renderMessengerInbox() {
+        const inbox = document.getElementById('admin-messenger-inbox');
+        if (!inbox) return;
+
+        // Group by project
+        const conversations = {};
+        allMessages.forEach(msg => {
+          if (!conversations[msg.projectId]) {
+            conversations[msg.projectId] = {
+              projectId: msg.projectId,
+              userName: msg.senderName || 'Client',
+              projectType: msg.projectType || 'Project',
+              lastMessage: msg.content,
+              time: msg.createdAt,
+              unreadCount: 0
+            };
+          }
+          if (msg.senderRole === 'user' && !msg.isRead) {
+            conversations[msg.projectId].unreadCount++;
+          }
+        });
+
+        const convList = Object.values(conversations).sort((a,b) => new Date(b.time) - new Date(a.time));
+
+        if (convList.length === 0) {
+          inbox.innerHTML = '<div class="admin__empty"><p>No messages yet</p></div>';
+          return;
+        }
+
+        inbox.innerHTML = convList.map(function(conv) {
+          const isActive = activeProjectId === conv.projectId;
+          return '<div class="messenger__inbox-item ' + (isActive ? 'messenger__inbox-item--active' : '') + ' ' + (conv.unreadCount > 0 ? 'messenger__inbox-item--unread' : '') + '" onclick="window.selectConversation(' + conv.projectId + ')">' +
+            '<div class="messenger__inbox-avatar">' + conv.userName.charAt(0).toUpperCase() + '</div>' +
+            '<div class="messenger__inbox-content">' +
+              '<div class="messenger__inbox-header">' +
+                '<span class="messenger__inbox-name">' + conv.userName + '</span>' +
+                '<span class="messenger__inbox-time">' + formatTime(conv.time) + '</span>' +
+              '</div>' +
+              '<div class="messenger__inbox-snippet">' + conv.lastMessage + '</div>' +
+            '</div>' +
+            (conv.unreadCount > 0 ? '<div class="admin__badge" style="position:absolute; right:1rem; bottom:1rem">' + conv.unreadCount + '</div>' : '') +
+          '</div>';
+        }).join('');
+      }
+
+      window.selectConversation = async function(projectId) {
+        activeProjectId = projectId;
+        
+        // Show components
+        document.getElementById('active-chat-header').style.display = 'flex';
+        document.getElementById('admin-chat-input-area').style.display = 'block';
+        document.getElementById('admin-chat-tools').style.display = 'flex';
+        
+        // Update header
+        const proj = projects.find(p => p.id === projectId);
+        if (proj) {
+          const fullName = (proj.firstName && proj.lastName) ? (proj.firstName + ' ' + proj.lastName) : (proj.userName || 'Client');
+          document.getElementById('active-chat-name').textContent = fullName;
+          document.getElementById('active-chat-project').textContent = proj.projectType || 'Project';
+          document.getElementById('active-chat-avatar').textContent = (fullName.charAt(0) || 'U').toUpperCase();
+          
+          // Toggle payment verify tool
+          document.getElementById('verify-tool').style.display = proj.paymentStatus === 'submitted' ? 'block' : 'none';
+        }
+
+        renderMessengerInbox(); // Update active selection
+        renderActiveConversation();
+      };
+
+      async function renderActiveConversation() {
+        const chatScroll = document.getElementById('admin-chat-scroll');
+        if (!chatScroll || !activeProjectId) return;
+
+        try {
+          const messages = await API.getProjectMessages(activeProjectId);
+          chatScroll.innerHTML = messages.map(function(msg) {
+            const isMe = msg.senderRole === 'admin';
+            return '<div class="chat__bubble-group ' + (isMe ? 'chat__bubble-group--me' : 'chat__bubble-group--them') + '">' +
+              '<div class="chat__bubble ' + (isMe ? 'chat__bubble--me' : 'chat__bubble--them') + '">' +
+                msg.content +
+              '</div>' +
+              '<div class="chat__bubble-time">' + formatTime(msg.createdAt) + '</div>' +
+            '</div>';
+          }).join('');
+          
+          chatScroll.scrollTo({
+            top: chatScroll.scrollHeight,
+            behavior: 'smooth'
+          });
+        } catch (error) {
+          console.error('Error loading project messages:', error);
+        }
+      }
+
+      // Admin Power Tools Logic
+      window.quickUpdateStatus = async function(status) {
+        if (!activeProjectId) return;
+        try {
+          await API.updateProjectStatus(activeProjectId, status);
+          alert('Status updated to: ' + status);
+          loadData();
+        } catch (error) {
+          alert('Error: ' + error.message);
+        }
+      };
+
+      window.quickVerifyPayment = async function() {
+        if (!activeProjectId) return;
+        try {
+          await API.verifyPayment(activeProjectId);
+          alert('Payment verified!');
+          document.getElementById('verify-tool').style.display = 'none';
+          loadData();
+        } catch (error) {
+          alert('Error: ' + error.message);
+        }
+      };
+
+      window.useTemplate = function(text) {
+        const ta = document.getElementById('admin-chat-textarea');
+        ta.value = text;
+        ta.focus();
+        ta.style.height = 'auto';
+        ta.style.height = ta.scrollHeight + 'px';
+      };
+
+      // Chat Form
+      const adminChatForm = document.getElementById('admin-chat-form');
+      const adminChatTextarea = document.getElementById('admin-chat-textarea');
+      if (adminChatForm && adminChatTextarea) {
+        adminChatTextarea.addEventListener('input', function() {
+          this.style.height = 'auto';
+          this.style.height = Math.min(this.scrollHeight, 120) + 'px';
+        });
+
+        adminChatTextarea.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            adminChatForm.dispatchEvent(new Event('submit'));
+          }
+        });
+
+        adminChatForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          if (!activeProjectId) return;
+          const content = adminChatTextarea.value.trim();
+          if (!content) return;
+          
+          const btn = document.getElementById('admin-chat-send-btn');
+          btn.disabled = true;
+          try {
+            await API.sendMessage(activeProjectId, content);
+            adminChatTextarea.value = '';
+            adminChatTextarea.style.height = 'auto';
+            loadAdminMessages();
+          } catch (error) {
+            alert('Error: ' + error.message);
+          } finally {
+            btn.disabled = false;
+          }
+        });
+      }
+
+      // Start Polling for Admin Messenger
+      setInterval(function() {
+        if (document.getElementById('messages').classList.contains('dashboard__section--active')) {
+          loadAdminMessages();
+        }
+      }, 10000);
+
+      function formatTime(timestamp) {
+        if (!timestamp) return '';
+        let dateString = timestamp;
+        if (typeof dateString === 'string' && !dateString.endsWith('Z') && !dateString.includes('+')) {
+          dateString += 'Z';
+        }
+        const date = new Date(dateString);
+        const now = new Date();
+        const diff = now - date;
+        if (isNaN(date.getTime())) return timestamp;
+        if (diff < 60000) return 'Just now';
+        if (diff < 3600000) return Math.floor(diff / 60000) + 'm ago';
+        if (diff < 86400000) return Math.floor(diff / 3600000) + 'h ago';
+        return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      }
+      
+      function populateProjectSelects() {
+        const deliverySelect = document.getElementById('delivery-project');
+        if (!deliverySelect) return;
+        
+        const options = projects.map(function(project) {
+          return '<option value="' + project.id + '">' + (project.userName || 'Unknown') + ' - ' + (project.projectType || 'Project') + ' (ID: ' + project.id + ')</option>';
+        }).join('');
+        
+        deliverySelect.innerHTML = '<option value="">Choose a project...</option>' + options;
+      }
+      
+      // Mobile menu toggle
+      if (menuToggle) {
+        menuToggle.addEventListener('click', function() {
+          sidebar.classList.toggle('dashboard__sidebar--open');
+        });
+      }
+      
+      // Navigation
+      navItems.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          const sectionId = this.dataset.section;
+          
+          navItems.forEach(function(nav) {
+            nav.classList.remove('dashboard__nav-item--active');
+          });
+          this.classList.add('dashboard__nav-item--active');
+          
+          sections.forEach(function(section) {
+            section.classList.remove('dashboard__section--active');
+            if (section.id === sectionId) {
+              section.classList.add('dashboard__section--active');
+            }
+          });
+          
+          sidebar.classList.remove('dashboard__sidebar--open');
+        });
+      });
+      
+      // Message form
+      if (messageForm) {
+        messageForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const projectId = document.getElementById('message-project').value;
+          const content = document.getElementById('message-content').value;
+          
+          if (!projectId || !content) {
+            alert('Please select a project and enter a message');
+            return;
+          }
+          
+          const btn = this.querySelector('button[type="submit"]');
+          btn.disabled = true;
+          btn.innerHTML = 'Sending...';
+          
+          try {
+            await API.sendMessage(parseInt(projectId, 10), content);
+            document.getElementById('message-content').value = '';
+            alert('Message sent successfully!');
+          } catch (error) {
+            alert('Error sending message: ' + error.message);
+          }
+          
+          btn.disabled = false;
+          btn.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg> Send Message';
+        });
+      }
+      
+      // Delivery form
+      if (deliveryForm) {
+        deliveryForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const projectId = document.getElementById('delivery-project').value;
+          const projectUrl = document.getElementById('project-url').value;
+          const githubUrl = document.getElementById('github-url').value;
+          
+          if (!projectId || !projectUrl || !githubUrl) {
+            alert('Please fill in all fields');
+            return;
+          }
+          
+          const btn = this.querySelector('button[type="submit"]');
+          btn.disabled = true;
+          btn.innerHTML = 'Delivering...';
+          
+          try {
+            await API.deliverProject(parseInt(projectId, 10), projectUrl, githubUrl);
+            await API.updateProjectStatus(parseInt(projectId, 10), 'completed', 100);
+            
+            // Send delivery message
+            await API.sendMessage(parseInt(projectId, 10), 
+              'Great news! Your project is complete and has been delivered. You can now access your live website and GitHub repository from the Payment section.');
+            
+            await loadData();
+            deliveryForm.reset();
+            alert('Project delivered successfully!');
+          } catch (error) {
+            alert('Error delivering project: ' + error.message);
+          }
+          
+          btn.disabled = false;
+          btn.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg> Deliver Project';
+        });
+      }
+      
+      // Transfer repo button
+      if (transferRepoBtn) {
+        transferRepoBtn.addEventListener('click', async function() {
+          const projectId = document.getElementById('delivery-project').value;
+          
+          if (!projectId) {
+            alert('Please select a project first');
+            return;
+          }
+          
+          this.disabled = true;
+          this.innerHTML = 'Transferring...';
+          
+          try {
+            await API.transferGitHub(parseInt(projectId, 10));
+            document.getElementById('transfer-status').style.display = 'block';
+            alert('GitHub repository marked as transferred!');
+          } catch (error) {
+            alert('Error transferring repo: ' + error.message);
+          }
+          
+          this.disabled = false;
+          this.innerHTML = '<svg fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg> Transfer GitHub Repo';
+        });
+      }
+      
+      // Admin logout
+      const adminLogout = document.getElementById('admin-logout');
+      if (adminLogout) {
+        adminLogout.addEventListener('click', function() {
+          API.logout();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign in to EIXIMARA - Access your dashboard and manage your projects.">
+  <meta name="theme-color" content="#F2FAF6">
+  <title>Sign In - EIXIMARA</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="auth">
+    <!-- Background Grid -->
+    <div class="auth__grid" aria-hidden="true">
+      <div class="auth__grid-line--h" style="top: 20%"></div>
+      <div class="auth__grid-line--h" style="top: 40%"></div>
+      <div class="auth__grid-line--h" style="top: 60%"></div>
+      <div class="auth__grid-line--h" style="top: 80%"></div>
+      <div class="auth__grid-line--v" style="left: 20%"></div>
+      <div class="auth__grid-line--v" style="left: 40%"></div>
+      <div class="auth__grid-line--v" style="left: 60%"></div>
+      <div class="auth__grid-line--v" style="left: 80%"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="auth__header">
+      <a href="index.html" class="nav__logo text-gradient font-display">EIXIMARA</a>
+    </header>
+
+    <!-- Main Content -->
+    <main class="auth__content">
+      <div class="auth__card glass">
+        <!-- Card Header -->
+        <div class="auth__card-header">
+          <h1 class="auth__title font-display" id="auth-title">Welcome back</h1>
+          <p class="auth__subtitle" id="auth-subtitle">Sign in to access your dashboard</p>
+        </div>
+
+        <!-- Auth Tabs -->
+        <div class="auth__tabs">
+          <button type="button" class="auth__tab auth__tab--active" data-tab="signin">Sign in</button>
+          <button type="button" class="auth__tab" data-tab="signup">Sign up</button>
+        </div>
+
+        <!-- Sign In Form -->
+        <form id="signin-form" class="auth__form">
+          <div class="auth__field">
+            <label for="signin-email" class="label">Email address</label>
+            <input type="email" id="signin-email" name="email" class="input input--lg" placeholder="you@example.com" required>
+          </div>
+          
+          <div class="auth__field">
+            <label for="signin-password" class="label">Password</label>
+            <div class="auth__password-wrapper">
+              <input type="password" id="signin-password" name="password" class="input input--lg" placeholder="Enter your password" required>
+              <button type="button" class="auth__password-toggle" aria-label="Toggle password visibility">
+                <svg class="auth__eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="auth__options">
+            <label class="auth__checkbox">
+              <input type="checkbox" name="remember">
+              <span class="auth__checkbox-mark"></span>
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="auth__link">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--lg auth__submit hover-glow">
+            Sign in
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Sign Up Form (Hidden by default) -->
+        <form id="signup-form" class="auth__form" style="display: none;">
+          <div class="auth__form-grid">
+            <div class="auth__field">
+              <label for="signup-name" class="label">Full name</label>
+              <input type="text" id="signup-name" name="name" class="input input--lg" placeholder="John Doe" required>
+            </div>
+            <div class="auth__field">
+              <label for="signup-email" class="label">Email address</label>
+              <input type="email" id="signup-email" name="email" class="input input--lg" placeholder="you@example.com" required>
+            </div>
+          </div>
+          
+          <div class="auth__field">
+            <label for="signup-password" class="label">Password</label>
+            <div class="auth__password-wrapper">
+              <input type="password" id="signup-password" name="password" class="input input--lg" placeholder="Create a strong password" required>
+              <button type="button" class="auth__password-toggle" aria-label="Toggle password visibility">
+                <svg class="auth__eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </button>
+            </div>
+            <p class="auth__hint">Must be at least 8 characters</p>
+          </div>
+
+          <div class="auth__field">
+            <label for="signup-confirm" class="label">Confirm password</label>
+            <div class="auth__password-wrapper">
+              <input type="password" id="signup-confirm" name="confirm" class="input input--lg" placeholder="Confirm your password" required>
+              <button type="button" class="auth__password-toggle" aria-label="Toggle password visibility">
+                <svg class="auth__eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <label class="auth__checkbox">
+            <input type="checkbox" id="signup-terms" name="terms" required>
+            <span class="auth__checkbox-mark"></span>
+            <span>I agree to the <a href="#" class="auth__link">Terms of Service</a> and <a href="#" class="auth__link">Privacy Policy</a></span>
+          </label>
+
+          <button type="submit" class="btn btn--primary btn--lg auth__submit hover-glow">
+            Create account
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="auth__divider">
+          <span>or continue with</span>
+        </div>
+        
+        <!-- Social Login Container -->
+        <div class="auth__social" style="display: flex; justify-content: center; min-height: 44px;">
+          <!-- Google button will be rendered here by GSI script -->
+          <div id="google-login-btn"></div>
+        </div>
+        
+        <!-- Notice -->
+        <div class="auth__notice">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span>You must <a href="book.html" class="auth__link">book a slot</a> first to access the dashboard</span>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="auth__footer">
+      <p class="font-mono">&copy; 2024 EIXIMARA. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      'use strict';
+      
+      // Check if already logged in
+      if (API.isLoggedIn()) {
+        const user = API.getUser();
+        if (user && user.role === 'admin') {
+          window.location.href = 'admin.html';
+          return;
+        } else if (user) {
+          window.location.href = 'dashboard.html';
+          return;
+        } else {
+          // Invalid state: token exists but no user info
+          API.clearAuth();
+        }
+      }
+      
+      // Elements
+      const tabs = document.querySelectorAll('.auth__tab');
+      const signinForm = document.getElementById('signin-form');
+      const signupForm = document.getElementById('signup-form');
+      const authTitle = document.getElementById('auth-title');
+      const authSubtitle = document.getElementById('auth-subtitle');
+      const passwordToggles = document.querySelectorAll('.auth__password-toggle');
+      const googleSignin = document.getElementById('google-signin');
+      
+      // Helper: Show error message
+      function showError(message) {
+        let errorDiv = document.getElementById('inline-error');
+        if (!errorDiv) {
+          errorDiv = document.createElement('div');
+          errorDiv.id = 'inline-error';
+          errorDiv.className = 'auth__notice';
+          errorDiv.style.backgroundColor = 'rgba(234, 67, 53, 0.1)';
+          errorDiv.style.color = '#ea4335';
+          errorDiv.style.marginBottom = '1.5rem';
+          const cardHeader = document.querySelector('.auth__card-header');
+          if (cardHeader) cardHeader.insertAdjacentElement('afterend', errorDiv);
+        }
+        errorDiv.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>' + message + '</span>';
+      }
+      
+      // Helper: Set loading state
+      function setLoading(form, loading) {
+        const btn = form.querySelector('button[type="submit"]');
+        const inputs = form.querySelectorAll('input');
+        btn.disabled = loading;
+        inputs.forEach(function(input) { input.disabled = loading; });
+        btn.innerHTML = loading 
+          ? '<span style="opacity:0.7">Please wait...</span>'
+          : (form.id === 'signin-form' ? 'Sign in' : 'Create account') + ' <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
+      }
+      
+      // Tab switching
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          const targetTab = this.dataset.tab;
+          
+          // Update active tab
+          tabs.forEach(function(t) {
+            t.classList.remove('auth__tab--active');
+          });
+          this.classList.add('auth__tab--active');
+          
+          // Show/hide forms
+          if (targetTab === 'signin') {
+            signinForm.style.display = 'block';
+            signupForm.style.display = 'none';
+            authTitle.textContent = 'Welcome back';
+            authSubtitle.textContent = 'Sign in to access your dashboard';
+          } else {
+            signinForm.style.display = 'none';
+            signupForm.style.display = 'block';
+            authTitle.textContent = 'Create account';
+            authSubtitle.textContent = 'Sign up to get started with EIXIMARA';
+          }
+        });
+      });
+      
+      // Password visibility toggle
+      passwordToggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+          const input = this.previousElementSibling;
+          const icon = this.querySelector('.auth__eye-icon');
+          
+          if (input.type === 'password') {
+            input.type = 'text';
+            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>';
+          } else {
+            input.type = 'password';
+            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>';
+          }
+        });
+      });
+      
+      // Sign In Form Submit
+      signinForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('signin-email').value;
+        const password = document.getElementById('signin-password').value;
+        
+        setLoading(signinForm, true);
+        
+        try {
+          const result = await API.login(email, password);
+          
+          // Redirect based on role
+          if (result.user.role === 'admin') {
+            window.location.href = 'admin.html';
+          } else {
+            window.location.href = 'dashboard.html';
+          }
+        } catch (error) {
+          showError(error.message);
+          setLoading(signinForm, false);
+        }
+      });
+      
+      // Sign Up Form Submit
+      signupForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const fullName = document.getElementById('signup-name').value;
+        const email = document.getElementById('signup-email').value;
+        const password = document.getElementById('signup-password').value;
+        const confirm = document.getElementById('signup-confirm').value;
+        
+        // Basic validation
+        if (password !== confirm) {
+          showError('Passwords do not match');
+          return;
+        }
+        
+        if (password.length < 8) {
+          showError('Password must be at least 8 characters');
+          return;
+        }
+        
+        // Parse name
+        const nameParts = fullName.trim().split(' ');
+        const firstName = nameParts[0] || '';
+        const lastName = nameParts.slice(1).join(' ') || firstName; // Fallback so server never receives empty string
+        
+        if (!firstName) {
+          showError('Please enter your full name');
+          return;
+        }
+        
+        setLoading(signupForm, true);
+        
+        try {
+          await API.register(email, password, firstName, lastName);
+          window.location.href = 'dashboard.html';
+        } catch (error) {
+          showError(error.message);
+          setLoading(signupForm, false);
+        }
+      });
+      
+      // Google Identity Services setup
+      window.handleGoogleCredentialResponse = async function(response) {
+        showError(''); // Clear any previous errors
+        try {
+          const result = await API.googleLogin(response.credential);
+          if (result.user.role === 'admin') {
+            window.location.href = 'admin.html';
+          } else {
+            window.location.href = 'dashboard.html';
+          }
+        } catch (error) {
+          showError(error.message || 'Google authentication failed');
+        }
+      };
+
+      // Wait for the GSI library to load if it hasn't already
+      const initGoogleAuth = setInterval(() => {
+        if (window.google && window.google.accounts) {
+          clearInterval(initGoogleAuth);
+          
+          google.accounts.id.initialize({
+            client_id: "558294499174-ph1gfr2nepnd4p1vvip0jaorhkb6c3on.apps.googleusercontent.com",
+            callback: handleGoogleCredentialResponse,
+            auto_select: false
+          });
+          
+          const btnContainer = document.getElementById("google-login-btn");
+          if (btnContainer) {
+            google.accounts.id.renderButton(
+              btnContainer,
+              { theme: "outline", size: "large", type: "standard", shape: "pill", width: 400, text: "continue_with" }
+            );
+          }
+        }
+      }, 100);
+    });
+  </script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>
