@@ -1,374 +1,2847 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Sign in to EIXIMARA - Access your dashboard and manage your projects.">
-  <meta name="theme-color" content="#F2FAF6">
-  <title>Sign In - EIXIMARA</title>
-  
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div class="auth">
-    <!-- Background Grid -->
-    <div class="auth__grid" aria-hidden="true">
-      <div class="auth__grid-line--h" style="top: 20%"></div>
-      <div class="auth__grid-line--h" style="top: 40%"></div>
-      <div class="auth__grid-line--h" style="top: 60%"></div>
-      <div class="auth__grid-line--h" style="top: 80%"></div>
-      <div class="auth__grid-line--v" style="left: 20%"></div>
-      <div class="auth__grid-line--v" style="left: 40%"></div>
-      <div class="auth__grid-line--v" style="left: 60%"></div>
-      <div class="auth__grid-line--v" style="left: 80%"></div>
-    </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sign in to EIXIMARA — Access your dashboard and manage your projects."
+    />
+    <meta name="theme-color" content="#0d1a14" />
+    <title>Sign In — EIXIMARA</title>
 
-    <!-- Header -->
-    <header class="auth__header">
-      <a href="index.html" class="nav__logo text-gradient font-display">EIXIMARA</a>
-    </header>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-    <!-- Main Content -->
-    <main class="auth__content">
-      <div class="auth__card glass">
-        <!-- Card Header -->
-        <div class="auth__card-header">
-          <h1 class="auth__title font-display" id="auth-title">Welcome back</h1>
-          <p class="auth__subtitle" id="auth-subtitle">Sign in to access your dashboard</p>
+    <style>
+      /* ═══════════════════════════════════════════════════
+       CSS CUSTOM PROPERTIES — EIXIMARA AUTH
+       ═══════════════════════════════════════════════════ */
+      :root {
+        --color-bg: #0d1a14;
+        --color-bg-2: #0a1510;
+        --color-surface: rgba(255, 255, 255, 0.04);
+        --color-surface-2: rgba(255, 255, 255, 0.07);
+        --color-border: rgba(44, 182, 125, 0.18);
+        --color-border-2: #2cb67d;
+        --color-accent: #2cb67d;
+        --color-accent-glow: rgba(44, 182, 125, 0.25);
+        --color-accent-2: #7c3aed;
+        --color-accent-2-glow: rgba(124, 58, 237, 0.22);
+        --color-text: #e8f5f0;
+        --color-text-muted: rgba(232, 245, 240, 0.55);
+        --color-text-dim: rgba(232, 245, 240, 0.35);
+        --color-primary: #7c3aed;
+        --color-primary-glow: rgba(124, 58, 237, 0.45);
+
+        --font-sans: "Inter", system-ui, sans-serif;
+        --font-display: "Space Grotesk", "Inter", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      body {
+        font-family: var(--font-sans);
+        background: var(--color-bg);
+        color: var(--color-text);
+        min-height: 100dvh;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button,
+      input {
+        font: inherit;
+      }
+      img,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      /* ═══════════════════════════════════════════════════
+       PAGE LOAD ANIMATION
+       ═══════════════════════════════════════════════════ */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(28px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes slideRight {
+        from {
+          opacity: 0;
+          transform: translateX(-32px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @keyframes floatA {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, -20px) scale(1.05);
+        }
+        66% {
+          transform: translate(-20px, 25px) scale(0.97);
+        }
+      }
+      @keyframes floatB {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        40% {
+          transform: translate(-25px, 20px) scale(1.04);
+        }
+        70% {
+          transform: translate(20px, -15px) scale(0.98);
+        }
+      }
+      @keyframes floatC {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(15px, -10px) rotate(8deg);
+        }
+      }
+      @keyframes pulse-ring {
+        0% {
+          transform: scale(0.9);
+          opacity: 0.6;
+        }
+        100% {
+          transform: scale(1.5);
+          opacity: 0;
+        }
+      }
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes marqueeTick {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes phoneFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(-1.5deg);
+        }
+        50% {
+          transform: translateY(-14px) rotate(-1.5deg);
+        }
+      }
+      @keyframes phoneGlow {
+        0%,
+        100% {
+          filter: drop-shadow(0 32px 64px rgba(0, 0, 0, 0.6))
+            drop-shadow(0 0 40px rgba(44, 182, 125, 0.12));
+        }
+        50% {
+          filter: drop-shadow(0 44px 80px rgba(0, 0, 0, 0.65))
+            drop-shadow(0 0 70px rgba(44, 182, 125, 0.26));
+        }
+      }
+      @keyframes scanLine {
+        0% {
+          top: -2px;
+          opacity: 0.7;
+        }
+        80% {
+          opacity: 0.4;
+        }
+        100% {
+          top: 100%;
+          opacity: 0;
+        }
+      }
+      @keyframes screenShimmer {
+        0% {
+          transform: translateX(-120%) skewX(-12deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(250%) skewX(-12deg);
+          opacity: 0;
+        }
+      }
+      @keyframes notifPop {
+        0% {
+          opacity: 0;
+          transform: translateY(-10px) scale(0.94);
+        }
+        18% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        80% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-6px) scale(0.97);
+        }
+      }
+      @keyframes pingDot {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(2.6);
+          opacity: 0;
+        }
+      }
+      @keyframes tabSlide {
+        0%,
+        42% {
+          left: 3px;
+        }
+        50%,
+        92% {
+          left: calc(50% + 1px);
+        }
+        100% {
+          left: 3px;
+        }
+      }
+      @keyframes cursorBlink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+      @keyframes inputBorderGlow {
+        0% {
+          box-shadow: 0 0 0 0 var(--color-accent-glow);
+        }
+        100% {
+          box-shadow: 0 0 0 6px transparent;
+        }
+      }
+
+      /* ═════════════════════════════════════
+   SPLIT LAYOUT — 65 / 35
+   ═════════════════════════════════════ */
+
+      .auth-layout {
+        display: grid;
+        grid-template-columns: 65% 35%;
+        min-height: 100vh;
+      }
+
+      /* RESPONSIVE (KEEP THIS) */
+      @media (max-width: 900px) {
+        .auth-layout {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto 1fr;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════
+       LEFT SIDE — BRANDING
+       ═══════════════════════════════════════════════════ */
+      .auth-brand {
+        position: relative;
+        background: var(--color-bg-2);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 2.5rem;
+        animation: fadeIn 0.8s var(--ease-out-expo) both;
+      }
+
+      /* Mesh gradient blobs */
+      .blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+      }
+      .blob--1 {
+        width: 520px;
+        height: 520px;
+        background: radial-gradient(
+          circle,
+          rgba(44, 182, 125, 0.22) 0%,
+          transparent 70%
+        );
+        top: -120px;
+        left: -80px;
+        animation: floatA 14s ease-in-out infinite;
+      }
+      .blob--2 {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.18) 0%,
+          transparent 70%
+        );
+        bottom: 80px;
+        right: -60px;
+        animation: floatB 18s ease-in-out infinite;
+      }
+      .blob--3 {
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(44, 182, 125, 0.12) 0%,
+          transparent 70%
+        );
+        bottom: 200px;
+        left: 100px;
+        animation: floatC 12s ease-in-out infinite;
+      }
+
+      /* Grid lines on left */
+      .brand-grid {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .brand-grid__line {
+        position: absolute;
+        background: rgba(164, 184, 176, 0.06);
+      }
+      .brand-grid__line--h {
+        left: 0;
+        right: 0;
+        height: 1px;
+      }
+      .brand-grid__line--v {
+        top: 0;
+        bottom: 0;
+        width: 1px;
+      }
+
+      /* Noise overlay */
+      .brand-noise {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.025;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        background-size: 200px;
+      }
+
+      /* Brand header */
+      .brand-header {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        animation: slideRight 0.7s 0.1s var(--ease-out-expo) both;
+      }
+      .brand-logo {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #2cb67d, #7eedc7, #7c3aed);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientShift 5s ease infinite;
+      }
+      .brand-badge {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.7rem;
+        font-family: var(--font-mono);
+        color: var(--color-accent);
+        background: rgba(44, 182, 125, 0.1);
+        border: 1px solid rgba(44, 182, 125, 0.25);
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        letter-spacing: 0.08em;
+      }
+      .brand-badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--color-accent);
+        border-radius: 50%;
+        animation: pulse-ring 1.8s ease-out infinite;
+        display: inline-block;
+      }
+
+      .brand-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.72rem;
+        font-family: var(--font-mono);
+        color: var(--color-accent);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+      .brand-eyebrow::before {
+        content: "";
+        display: block;
+        width: 28px;
+        height: 1px;
+        background: var(--color-accent);
+      }
+
+      .brand-headline {
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.04em;
+        color: var(--color-text);
+        margin-bottom: 1.5rem;
+      }
+      .brand-headline .grad {
+        background: linear-gradient(
+          135deg,
+          #2cb67d 0%,
+          #7eedc7 40%,
+          #a78bfa 100%
+        );
+        background-size: 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientShift 6s ease infinite;
+      }
+
+      .brand-desc {
+        font-size: 1rem;
+        color: var(--color-text-muted);
+        line-height: 1.7;
+        max-width: 380px;
+        margin-bottom: 2.5rem;
+      }
+
+      /* Feature pills */
+      .brand-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-bottom: 2.5rem;
+      }
+      .feature-pill {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.55rem 1rem;
+        border-radius: 999px;
+        border: 1px solid var(--color-border);
+        background: var(--color-surface);
+        font-size: 0.82rem;
+        color: var(--color-text-muted);
+        backdrop-filter: blur(8px);
+        transition:
+          border-color 0.25s,
+          color 0.25s,
+          background 0.25s;
+      }
+      .feature-pill:hover {
+        border-color: var(--color-border-2);
+        color: var(--color-text);
+        background: var(--color-surface-2);
+      }
+      .feature-pill .icon {
+        width: 16px;
+        height: 16px;
+        color: var(--color-accent);
+        flex-shrink: 0;
+      }
+
+      /* Stat cards row */
+      .brand-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+      }
+      .stat-card {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 1rem;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        transition:
+          border-color 0.25s,
+          transform 0.25s;
+      }
+      .stat-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(44, 182, 125, 0.06) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+      .stat-card:hover {
+        border-color: var(--color-border-2);
+        transform: translateY(-2px);
+      }
+      .stat-value {
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        background: linear-gradient(135deg, #2cb67d, #7eedc7);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: block;
+        margin-bottom: 0.2rem;
+      }
+      .stat-label {
+        font-size: 0.72rem;
+        color: var(--color-text-dim);
+        line-height: 1.4;
+      }
+
+      /* Testimonial ticker */
+      .brand-ticker {
+        position: relative;
+        z-index: 2;
+        animation: fadeUp 0.9s 0.4s var(--ease-out-expo) both;
+        overflow: hidden;
+      }
+      .ticker-label {
+        font-size: 0.68rem;
+        font-family: var(--font-mono);
+        color: var(--color-text-dim);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+      .ticker-track {
+        display: flex;
+        gap: 1.5rem;
+        width: max-content;
+        animation: marqueeTick 28s linear infinite;
+      }
+      .ticker-track:hover {
+        animation-play-state: paused;
+      }
+      .ticker-item {
+        display: flex;
+        align-items: center;
+        gap: 0.65rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        padding: 0.65rem 1rem;
+        white-space: nowrap;
+        backdrop-filter: blur(6px);
+      }
+      .ticker-avatar {
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2cb67d, #7c3aed);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.68rem;
+        font-weight: 700;
+        color: white;
+        flex-shrink: 0;
+      }
+      .ticker-text {
+        font-size: 0.78rem;
+        color: var(--color-text-muted);
+      }
+      .ticker-text strong {
+        color: var(--color-text);
+        font-weight: 600;
+      }
+      .stars {
+        color: #fbbf24;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+      }
+
+      /* ═══════════════════════════════════════════════════
+       LEFT SIDE — BRAND MAIN: 2-COL (TEXT + IPHONE)
+       ═══════════════════════════════════════════════════ */
+      .brand-main {
+        position: relative;
+        z-index: 2;
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 2rem;
+        padding: 3rem 0;
+        animation: fadeUp 0.9s 0.25s var(--ease-out-expo) both;
+      }
+      .brand-main-text {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── iPhone wrapper ── */
+      .brand-iphone-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        animation:
+          phoneFloat 6s ease-in-out infinite,
+          phoneGlow 6s ease-in-out infinite,
+          fadeIn 1s 0.6s var(--ease-out-expo) both;
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      /* Floating notification above phone */
+      .phone-notif {
+        background: rgba(13, 26, 20, 0.92);
+        border: 1px solid rgba(44, 182, 125, 0.35);
+        backdrop-filter: blur(18px);
+        border-radius: 14px;
+        padding: 8px 11px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+        white-space: nowrap;
+        animation: notifPop 7s ease-in-out infinite 2s;
+      }
+      .notif-app-icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 7px;
+        background: linear-gradient(135deg, #2cb67d, #7c3aed);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: 800;
+        color: #fff;
+        font-family: var(--font-display);
+        flex-shrink: 0;
+      }
+      .notif-content {
+        flex: 1;
+      }
+      .notif-title {
+        font-size: 8.5px;
+        font-weight: 700;
+        color: rgba(232, 245, 240, 0.95);
+        font-family: var(--font-sans);
+      }
+      .notif-body {
+        font-size: 7.5px;
+        color: rgba(232, 245, 240, 0.5);
+        font-family: var(--font-sans);
+        margin-top: 1px;
+      }
+
+      /* ── iPhone body ── */
+      .iphone {
+        width: 195px;
+        height: 420px;
+        background: linear-gradient(
+          155deg,
+          #232325 0%,
+          #1a1a1c 55%,
+          #111113 100%
+        );
+        border-radius: 46px;
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.08),
+          inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+      }
+      /* Volume buttons left */
+      .iphone::before {
+        content: "";
+        position: absolute;
+        left: -3px;
+        top: 76px;
+        width: 3px;
+        height: 30px;
+        background: #2e2e30;
+        border-radius: 2px 0 0 2px;
+        box-shadow:
+          0 42px 0 #2e2e30,
+          0 84px 0 #2e2e30;
+      }
+      /* Power button right */
+      .iphone::after {
+        content: "";
+        position: absolute;
+        right: -3px;
+        top: 108px;
+        width: 3px;
+        height: 54px;
+        background: #2e2e30;
+        border-radius: 0 2px 2px 0;
+      }
+
+      /* Dynamic Island */
+      .iphone-island {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 72px;
+        height: 28px;
+        background: #000;
+        border-radius: 20px;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 9px;
+      }
+      .island-camera {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #1c1c1e;
+        border: 1px solid #2c2c2e;
+        position: relative;
+      }
+      .island-camera::after {
+        content: "";
+        position: absolute;
+        inset: 2px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, #0d4560, #060f18);
+      }
+
+      /* Screen */
+      .iphone-screen {
+        position: absolute;
+        inset: 8px;
+        border-radius: 38px;
+        background: linear-gradient(175deg, #0d1a14 0%, #081210 100%);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Scan line */
+      .iphone-screen::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 1.5px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(44, 182, 125, 0.5) 50%,
+          transparent 100%
+        );
+        animation: scanLine 5s linear infinite;
+        z-index: 20;
+        pointer-events: none;
+      }
+      /* Shimmer */
+      .iphone-screen::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 50px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.055),
+          transparent
+        );
+        animation: screenShimmer 6s ease-in-out infinite 3s;
+        z-index: 19;
+        pointer-events: none;
+      }
+
+      /* Glass reflection */
+      .iphone-reflection {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        height: 38%;
+        border-radius: 38px 38px 0 0;
+        background: linear-gradient(
+          165deg,
+          rgba(255, 255, 255, 0.055) 0%,
+          transparent 100%
+        );
+        pointer-events: none;
+        z-index: 11;
+      }
+
+      /* Status bar */
+      .iphone-status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 50px 16px 4px;
+        font-size: 9px;
+        font-weight: 600;
+        font-family: var(--font-sans);
+        color: rgba(232, 245, 240, 0.9);
+        flex-shrink: 0;
+      }
+      .s-icons {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .s-signal {
+        display: flex;
+        align-items: flex-end;
+        gap: 1px;
+        height: 8px;
+      }
+      .s-signal span {
+        display: block;
+        width: 2px;
+        background: rgba(232, 245, 240, 0.9);
+        border-radius: 1px;
+      }
+      .s-signal span:nth-child(1) {
+        height: 3px;
+      }
+      .s-signal span:nth-child(2) {
+        height: 5px;
+      }
+      .s-signal span:nth-child(3) {
+        height: 7px;
+      }
+      .s-signal span:nth-child(4) {
+        height: 8px;
+        opacity: 0.3;
+      }
+      .s-battery {
+        width: 18px;
+        height: 9px;
+        border: 1px solid rgba(232, 245, 240, 0.55);
+        border-radius: 2px;
+        padding: 1px;
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+      .s-battery::after {
+        content: "";
+        position: absolute;
+        right: -4px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 2px;
+        height: 5px;
+        background: rgba(232, 245, 240, 0.45);
+        border-radius: 0 1px 1px 0;
+      }
+      .s-batt-fill {
+        height: 100%;
+        width: 72%;
+        background: #2cb67d;
+        border-radius: 1px;
+      }
+
+      /* Screen content */
+      .iphone-content {
+        flex: 1;
+        padding: 6px 13px 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        overflow: hidden;
+      }
+
+      /* App header row */
+      .sc-app-row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 1px;
+      }
+      .sc-app-icon {
+        width: 26px;
+        height: 26px;
+        border-radius: 7px;
+        background: linear-gradient(135deg, #2cb67d, #7c3aed);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: 800;
+        color: #fff;
+        font-family: var(--font-display);
+        flex-shrink: 0;
+      }
+      .sc-app-name {
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        font-family: var(--font-display);
+        background: linear-gradient(135deg, #2cb67d, #7eedc7);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Heading */
+      .sc-heading {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: rgba(232, 245, 240, 0.97);
+        font-family: var(--font-display);
+        line-height: 1.15;
+      }
+      .sc-sub {
+        font-size: 8px;
+        color: rgba(232, 245, 240, 0.4);
+        margin-top: 1px;
+        font-family: var(--font-sans);
+      }
+
+      /* Tab bar */
+      .sc-tabs {
+        display: flex;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(44, 182, 125, 0.18);
+        border-radius: 9px;
+        padding: 3px;
+        position: relative;
+        margin-top: 1px;
+      }
+      .sc-tab-pill {
+        position: absolute;
+        top: 3px;
+        bottom: 3px;
+        width: calc(50% - 4px);
+        background: rgba(44, 182, 125, 0.2);
+        border: 1px solid rgba(44, 182, 125, 0.4);
+        border-radius: 6px;
+        animation: tabSlide 8s ease-in-out infinite;
+      }
+      .sc-tab {
+        flex: 1;
+        text-align: center;
+        font-size: 7.5px;
+        font-weight: 600;
+        color: rgba(232, 245, 240, 0.45);
+        padding: 4px 0;
+        position: relative;
+        z-index: 1;
+        font-family: var(--font-sans);
+      }
+      .sc-tab.on {
+        color: rgba(232, 245, 240, 0.95);
+      }
+
+      /* Google button */
+      .sc-google {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 7px;
+        padding: 5px 0;
+      }
+      .sc-g-logo {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: conic-gradient(
+          #4285f4 0 90deg,
+          #34a853 90deg 180deg,
+          #fbbc05 180deg 270deg,
+          #ea4335 270deg 360deg
+        );
+      }
+      .sc-google span {
+        font-size: 7px;
+        color: rgba(232, 245, 240, 0.6);
+        font-family: var(--font-sans);
+        font-weight: 500;
+      }
+
+      /* Divider */
+      .sc-divider {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .sc-divider-line {
+        flex: 1;
+        height: 1px;
+        background: rgba(232, 245, 240, 0.07);
+      }
+      .sc-divider span {
+        font-size: 6.5px;
+        color: rgba(232, 245, 240, 0.28);
+        font-family: var(--font-sans);
+      }
+
+      /* Inputs */
+      .sc-input {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(44, 182, 125, 0.18);
+        border-radius: 7px;
+        padding: 6px 9px;
+      }
+      .sc-input-icon {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: rgba(44, 182, 125, 0.5);
+        flex-shrink: 0;
+      }
+      .sc-input-line {
+        flex: 1;
+        height: 1px;
+        background: rgba(232, 245, 240, 0.1);
+        border-radius: 1px;
+        position: relative;
+        overflow: hidden;
+      }
+      .sc-input-line::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        border-radius: 1px;
+        background: rgba(232, 245, 240, 0.32);
+      }
+      .sc-input.email .sc-input-line::after {
+        width: 75%;
+      }
+      .sc-input.password .sc-input-icon {
+        background: rgba(124, 58, 237, 0.6);
+      }
+      .sc-pw-dots {
+        display: flex;
+        gap: 3px;
+        align-items: center;
+      }
+      .sc-pw-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: rgba(232, 245, 240, 0.55);
+      }
+      /* Blinking cursor on last field */
+      .sc-cursor {
+        display: inline-block;
+        width: 1px;
+        height: 9px;
+        background: #2cb67d;
+        margin-left: 2px;
+        border-radius: 1px;
+        animation: cursorBlink 1s step-end infinite;
+      }
+
+      /* CTA button */
+      .sc-btn {
+        background: linear-gradient(135deg, #2cb67d 0%, #20996a 100%);
+        border-radius: 8px;
+        padding: 7px;
+        text-align: center;
+        font-size: 8.5px;
+        font-weight: 700;
+        color: #fff;
+        font-family: var(--font-sans);
+        letter-spacing: 0.06em;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 14px rgba(44, 182, 125, 0.35);
+      }
+      .sc-btn::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.12) 0%,
+          transparent 50%
+        );
+      }
+
+      /* Home indicator */
+      .iphone-home {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 58px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+      }
+
+      /* Live badge below phone */
+      .phone-badge {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        background: rgba(13, 26, 20, 0.7);
+        border: 1px solid rgba(44, 182, 125, 0.25);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 5px 12px;
+        animation: fadeIn 1s 1.4s var(--ease-out-expo) both;
+      }
+      .badge-ping {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #2cb67d;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .badge-ping::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: #2cb67d;
+        animation: pingDot 1.6s ease-out infinite;
+      }
+      .badge-label {
+        font-size: 8px;
+        font-weight: 600;
+        color: rgba(232, 245, 240, 0.75);
+        font-family: var(--font-sans);
+        white-space: nowrap;
+      }
+
+      /* ═══════════════════════════════════════════════════
+       RIGHT SIDE — AUTH FORM
+       ═══════════════════════════════════════════════════ */
+      /* ═════════════════════════════════════
+   RIGHT PANEL — FINAL FIX (ALIGN + LIGHT)
+   ═════════════════════════════════════ */
+
+      .auth-form-side {
+        position: relative;
+
+        /* PERFECT CENTERING */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        /* REMOVE OFFSET ISSUE */
+        padding: 0;
+
+        /* LIGHT BACKGROUND */
+        background: linear-gradient(
+          135deg,
+          #e6f4ef 0%,
+          #d1efe4 50%,
+          #c7e9dc 100%
+        );
+
+        overflow: hidden;
+
+        /* TEXT COLORS (DARK) */
+        --color-text: #0f172a;
+        --color-text-muted: rgba(15, 23, 42, 0.65);
+        --color-text-dim: rgba(15, 23, 42, 0.45);
+      }
+
+      /* AUTH CARD (MAIN ALIGNMENT FIX) */
+      .auth-card {
+        width: 100%;
+        max-width: 420px;
+
+        margin: auto;
+        padding: 2.5rem;
+
+        background: rgba(255, 255, 255, 0.65);
+        border-radius: 16px;
+        backdrop-filter: blur(12px);
+      }
+
+      /* INPUTS */
+      .auth-form-side .auth-input {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        color: #0f172a;
+      }
+
+      .auth-form-side .auth-input::placeholder {
+        color: rgba(0, 0, 0, 0.4);
+      }
+
+      .auth-form-side .auth-input:focus {
+        background: #ffffff;
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 3px rgba(44, 182, 125, 0.15);
+      }
+
+      /* GOOGLE BUTTON */
+      .auth-form-side .btn-google {
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        color: #0f172a;
+      }
+
+      .auth-form-side .btn-google:hover {
+        background: #f8fafc;
+      }
+
+      /* TABS */
+      .auth-form-side .auth-tabs {
+        background: rgba(0, 0, 0, 0.04);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .auth-form-side .auth-tab {
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .auth-form-side .auth-tab.active {
+        background: rgba(44, 182, 125, 0.15);
+        color: #0f172a;
+      }
+
+      /* Subtle right-side bg glow */
+      .auth-form-side::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        top: -100px;
+        right: -150px;
+        background: radial-gradient(
+          circle,
+          rgba(124, 58, 237, 0.1) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+      .auth-form-side::after {
+        content: "";
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        bottom: -80px;
+        left: -100px;
+        background: radial-gradient(
+          circle,
+          rgba(44, 182, 125, 0.07) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      /* Back link */
+      .form-back {
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.83rem;
+        color: var(--color-text-dim);
+        transition: color 0.2s;
+        z-index: 2;
+      }
+      .form-back:hover {
+        color: var(--color-text);
+      }
+      .form-back svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* Auth card */
+      .auth-card {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        max-width: 440px;
+        animation: fadeUp 0.85s 0.35s var(--ease-out-expo) both;
+      }
+
+      .auth-card-header {
+        margin-bottom: 2rem;
+      }
+      .auth-card-title {
+        font-family: var(--font-display);
+        font-size: 1.9rem;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: var(--color-text);
+        margin-bottom: 0.4rem;
+      }
+      .auth-card-subtitle {
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+      }
+
+      /* Tabs */
+      .auth-tabs {
+        display: flex;
+        gap: 0.25rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 0.3rem;
+        margin-bottom: 2rem;
+      }
+      .auth-tab {
+        flex: 1;
+        padding: 0.6rem 1rem;
+        border: none;
+        background: none;
+        border-radius: 9px;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--color-text-dim);
+        cursor: pointer;
+        transition:
+          background 0.25s,
+          color 0.25s,
+          box-shadow 0.25s;
+      }
+      .auth-tab.active {
+        background: rgba(44, 182, 125, 0.12);
+        color: var(--color-text);
+        box-shadow: 0 0 0 1px rgba(44, 182, 125, 0.3) inset;
+      }
+
+      /* Form panels */
+      .auth-panel {
+        display: none;
+      }
+      .auth-panel.active {
+        display: block;
+        animation: fadeUp 0.45s var(--ease-out-expo) both;
+      }
+
+      /* Field */
+      .field {
+        margin-bottom: 1.25rem;
+      }
+      .field-label {
+        display: block;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--color-text-muted);
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.01em;
+      }
+      .field-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+
+      .input-wrap {
+        position: relative;
+      }
+      .input-icon {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        color: var(--color-text-dim);
+        pointer-events: none;
+        transition: color 0.25s;
+      }
+
+      .auth-input {
+        width: 100%;
+        padding: 0.85rem 1rem 0.85rem 2.75rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--color-border);
+        border-radius: 10px;
+        color: var(--color-text);
+        font-size: 0.9rem;
+        transition:
+          border-color 0.25s,
+          background 0.25s,
+          box-shadow 0.25s;
+        outline: none;
+      }
+      .auth-input::placeholder {
+        color: var(--color-text-dim);
+      }
+      .auth-input:focus {
+        border-color: var(--color-accent);
+        background: rgba(44, 182, 125, 0.05);
+        box-shadow: 0 0 0 3px rgba(44, 182, 125, 0.12);
+        animation: inputBorderGlow 0.4s ease;
+      }
+      .auth-input:focus + .input-icon,
+      .input-wrap:focus-within .input-icon {
+        color: var(--color-accent);
+      }
+
+      /* Password toggle */
+      .pw-toggle {
+        position: absolute;
+        right: 0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.25rem;
+        color: var(--color-text-dim);
+        transition: color 0.2s;
+        display: flex;
+        align-items: center;
+      }
+      .pw-toggle:hover {
+        color: var(--color-accent);
+      }
+      .pw-toggle svg {
+        width: 16px;
+        height: 16px;
+      }
+      .input-with-toggle {
+        padding-right: 2.75rem;
+      }
+
+      /* Row: remember + forgot */
+      .auth-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+      }
+      .auth-check {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        font-size: 0.82rem;
+        color: var(--color-text-muted);
+      }
+      .auth-check input {
+        display: none;
+      }
+      .check-box {
+        width: 16px;
+        height: 16px;
+        border: 1px solid var(--color-border);
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.04);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+        flex-shrink: 0;
+      }
+      .auth-check input:checked ~ .check-box {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+      }
+      .auth-check input:checked ~ .check-box::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 2px;
+        clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      }
+      .auth-forgot {
+        font-size: 0.82rem;
+        color: var(--color-accent);
+        transition: opacity 0.2s;
+      }
+      .auth-forgot:hover {
+        opacity: 0.75;
+      }
+
+      /* Primary button */
+      .btn-primary {
+        width: 100%;
+        padding: 0.95rem 1.5rem;
+        background: linear-gradient(135deg, #2cb67d, #22936a);
+        border: none;
+        border-radius: 10px;
+        color: white;
+        font-size: 0.92rem;
+        font-weight: 600;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        transition:
+          transform 0.2s var(--ease-bounce),
+          box-shadow 0.25s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.15),
+          transparent
+        );
+        transform: translateX(-100%);
+        transition: transform 0.5s;
+      }
+      .btn-primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 32px rgba(44, 182, 125, 0.4);
+      }
+      .btn-primary:hover::before {
+        transform: translateX(100%);
+      }
+      .btn-primary:active {
+        transform: translateY(0px);
+      }
+      .btn-primary svg {
+        width: 15px;
+        height: 15px;
+      }
+
+      /* Divider */
+      .auth-divider {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 1.5rem 0;
+      }
+      .auth-divider::before,
+      .auth-divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--color-border);
+      }
+      .auth-divider span {
+        font-size: 0.75rem;
+        color: var(--color-text-dim);
+        white-space: nowrap;
+        font-family: var(--font-mono);
+      }
+
+      /* Google button */
+      .btn-google {
+        width: 100%;
+        padding: 0.85rem 1.5rem;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--color-border);
+        border-radius: 10px;
+        color: var(--color-text);
+        font-size: 0.88rem;
+        font-weight: 500;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        transition:
+          border-color 0.25s,
+          background 0.25s,
+          transform 0.2s;
+      }
+      .btn-google:hover {
+        background: rgba(255, 255, 255, 0.07);
+        border-color: rgba(255, 255, 255, 0.18);
+        transform: translateY(-1px);
+      }
+      .btn-google svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      /* Terms / toggle link */
+      .auth-footer-text {
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 0.82rem;
+        color: var(--color-text-dim);
+      }
+      .auth-toggle-link {
+        color: var(--color-accent);
+        font-weight: 500;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        background: none;
+        border: none;
+        font: inherit;
+        display: inline;
+      }
+      .auth-toggle-link:hover {
+        opacity: 0.75;
+      }
+
+      /* Notice / error */
+      .auth-notice {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.2);
+        border-radius: 8px;
+        font-size: 0.83rem;
+        color: #f87171;
+        margin-bottom: 1.25rem;
+      }
+      .auth-notice svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+      .auth-notice.hidden {
+        display: none;
+      }
+
+      /* Password strength bar */
+      .pw-strength {
+        margin-top: 0.5rem;
+        display: flex;
+        gap: 4px;
+      }
+      .pw-bar {
+        flex: 1;
+        height: 3px;
+        border-radius: 2px;
+        background: var(--color-border);
+        transition: background 0.3s;
+      }
+      .pw-bar.weak {
+        background: #ef4444;
+      }
+      .pw-bar.fair {
+        background: #f59e0b;
+      }
+      .pw-bar.good {
+        background: #3b82f6;
+      }
+      .pw-bar.strong {
+        background: var(--color-accent);
+      }
+
+      /* ═══════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════ */
+      @media (max-width: 900px) {
+        .auth-layout {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto 1fr;
+        }
+        .auth-brand {
+          padding: 2rem 1.75rem 1.75rem;
+          min-height: auto;
+        }
+        .brand-main {
+          padding: 1.5rem 0;
+        }
+        .brand-headline {
+          font-size: 1.8rem;
+        }
+        .brand-stats {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .brand-ticker {
+          display: none;
+        }
+        .blob--1 {
+          width: 300px;
+          height: 300px;
+        }
+        .blob--2 {
+          width: 250px;
+          height: 250px;
+        }
+        .blob--3 {
+          display: none;
+        }
+
+        .auth-form-side {
+          padding: 2.5rem 1.75rem;
+          justify-content: flex-start;
+          padding-top: 3.5rem;
+        }
+        .auth-card {
+          max-width: 100%;
+        }
+        .form-back {
+          top: 1.25rem;
+          left: 1.25rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .field-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .brand-stats {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.5rem;
+        }
+        .stat-value {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+    <script src="js/api.js"></script>
+  </head>
+  <body>
+    <div class="auth-layout">
+      <!-- ══════════════════════════════════
+       LEFT — BRANDING PANEL
+       ══════════════════════════════════ -->
+      <section class="auth-brand" aria-label="EIXIMARA platform overview">
+        <!-- Blobs -->
+        <div class="blob blob--1" aria-hidden="true"></div>
+        <div class="blob blob--2" aria-hidden="true"></div>
+        <div class="blob blob--3" aria-hidden="true"></div>
+        <!-- Grid lines -->
+        <div class="brand-grid" aria-hidden="true">
+          <div
+            class="brand-grid__line brand-grid__line--h"
+            style="top: 20%"
+          ></div>
+          <div
+            class="brand-grid__line brand-grid__line--h"
+            style="top: 40%"
+          ></div>
+          <div
+            class="brand-grid__line brand-grid__line--h"
+            style="top: 60%"
+          ></div>
+          <div
+            class="brand-grid__line brand-grid__line--h"
+            style="top: 80%"
+          ></div>
+          <div
+            class="brand-grid__line brand-grid__line--v"
+            style="left: 25%"
+          ></div>
+          <div
+            class="brand-grid__line brand-grid__line--v"
+            style="left: 50%"
+          ></div>
+          <div
+            class="brand-grid__line brand-grid__line--v"
+            style="left: 75%"
+          ></div>
         </div>
+        <div class="brand-noise" aria-hidden="true"></div>
 
-        <!-- Auth Tabs -->
-        <div class="auth__tabs">
-          <button type="button" class="auth__tab auth__tab--active" data-tab="signin">Sign in</button>
-          <button type="button" class="auth__tab" data-tab="signup">Sign up</button>
-        </div>
+        <!-- Top bar -->
+        <header class="brand-header">
+          <a href="index.html" class="brand-logo">EIXIMARA</a>
+          <span class="brand-badge">Check for availability</span>
+        </header>
 
-        <!-- Sign In Form -->
-        <form id="signin-form" class="auth__form">
-          <div class="auth__field">
-            <label for="signin-email" class="label">Email address</label>
-            <input type="email" id="signin-email" name="email" class="input input--lg" placeholder="you@example.com" required>
-          </div>
-          
-          <div class="auth__field">
-            <label for="signin-password" class="label">Password</label>
-            <div class="auth__password-wrapper">
-              <input type="password" id="signin-password" name="password" class="input input--lg" placeholder="Enter your password" required>
-              <button type="button" class="auth__password-toggle" aria-label="Toggle password visibility">
-                <svg class="auth__eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+        <!-- Main copy -->
+        <div class="brand-main">
+          <div class="brand-main-text">
+            <div class="brand-eyebrow">Premium Software Studio</div>
+            <h1 class="brand-headline">
+              Build your<br />
+              digital presence<br />
+              with <span class="grad">precision.</span>
+            </h1>
+            <p class="brand-desc">
+              EIXIMARA crafts stunning portfolio websites and custom software
+              for students and professionals. From concept to live — fast,
+              polished, and built to impress.
+            </p>
+
+            <!-- Feature pills -->
+            <div class="brand-features">
+              <div class="feature-pill">
+                <svg
+                  class="icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
                 </svg>
-              </button>
-            </div>
-          </div>
-
-          <div class="auth__options">
-            <label class="auth__checkbox">
-              <input type="checkbox" name="remember">
-              <span class="auth__checkbox-mark"></span>
-              <span>Remember me</span>
-            </label>
-            <a href="#" class="auth__link">Forgot password?</a>
-          </div>
-
-          <button type="submit" class="btn btn--primary btn--lg auth__submit hover-glow">
-            Sign in
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-          </button>
-        </form>
-
-        <!-- Sign Up Form (Hidden by default) -->
-        <form id="signup-form" class="auth__form" style="display: none;">
-          <div class="auth__form-grid">
-            <div class="auth__field">
-              <label for="signup-name" class="label">Full name</label>
-              <input type="text" id="signup-name" name="name" class="input input--lg" placeholder="John Doe" required>
-            </div>
-            <div class="auth__field">
-              <label for="signup-email" class="label">Email address</label>
-              <input type="email" id="signup-email" name="email" class="input input--lg" placeholder="you@example.com" required>
-            </div>
-          </div>
-          
-          <div class="auth__field">
-            <label for="signup-password" class="label">Password</label>
-            <div class="auth__password-wrapper">
-              <input type="password" id="signup-password" name="password" class="input input--lg" placeholder="Create a strong password" required>
-              <button type="button" class="auth__password-toggle" aria-label="Toggle password visibility">
-                <svg class="auth__eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                End-to-end Secure
+              </div>
+              <div class="feature-pill">
+                <svg
+                  class="icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
                 </svg>
-              </button>
-            </div>
-            <p class="auth__hint">Must be at least 8 characters</p>
-          </div>
-
-          <div class="auth__field">
-            <label for="signup-confirm" class="label">Confirm password</label>
-            <div class="auth__password-wrapper">
-              <input type="password" id="signup-confirm" name="confirm" class="input input--lg" placeholder="Confirm your password" required>
-              <button type="button" class="auth__password-toggle" aria-label="Toggle password visibility">
-                <svg class="auth__eye-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                3-Day Delivery
+              </div>
+              <div class="feature-pill">
+                <svg
+                  class="icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                  />
                 </svg>
-              </button>
+                Analytics Dashboard
+              </div>
+              <div class="feature-pill">
+                <svg
+                  class="icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
+                </svg>
+                24/7 Support
+              </div>
+              <div class="feature-pill">
+                <svg
+                  class="icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"
+                  />
+                </svg>
+                Custom Branding
+              </div>
+              <div class="feature-pill">
+                <svg
+                  class="icon"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"
+                  />
+                </svg>
+                Global CDN
+              </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="brand-stats">
+              <div class="stat-card">
+                <span class="stat-value">50+</span>
+                <span class="stat-label">Projects<br />Delivered</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-value">100%</span>
+                <span class="stat-label">Client<br />Satisfaction</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-value">3d</span>
+                <span class="stat-label">Average<br />Turnaround</span>
+              </div>
             </div>
           </div>
+          <!-- /brand-main-text -->
 
-          <label class="auth__checkbox">
-            <input type="checkbox" id="signup-terms" name="terms" required>
-            <span class="auth__checkbox-mark"></span>
-            <span>I agree to the <a href="#" class="auth__link">Terms of Service</a> and <a href="#" class="auth__link">Privacy Policy</a></span>
-          </label>
+          <!-- iPhone Mockup -->
+          <div class="brand-iphone-wrap" aria-hidden="true">
+            <!-- Notification bubble -->
+            <div class="phone-notif">
+              <div class="notif-app-icon">E</div>
+              <div class="notif-content">
+                <div class="notif-title">Welcome to EIXIMARA</div>
+                <div class="notif-body">EIXIMARA · just now</div>
+              </div>
+            </div>
 
-          <button type="submit" class="btn btn--primary btn--lg auth__submit hover-glow">
-            Create account
-            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-          </button>
-        </form>
+            <!-- iPhone body -->
+            <div class="iphone">
+              <div class="iphone-island"><div class="island-camera"></div></div>
+              <div class="iphone-reflection"></div>
 
-        <!-- Divider -->
-        <div class="auth__divider">
-          <span>or continue with</span>
+              <div class="iphone-screen">
+                <!-- Status bar -->
+                <div class="iphone-status">
+                  <span>9:41</span>
+                  <div class="s-icons">
+                    <div class="s-signal">
+                      <span></span><span></span><span></span><span></span>
+                    </div>
+                    <svg
+                      width="9"
+                      height="7"
+                      viewBox="0 0 10 8"
+                      fill="rgba(232,245,240,0.85)"
+                    >
+                      <path
+                        d="M5 1.5C3.2 1.5 1.6 2.2 0.4 3.3L0 2.9C1.4 1.7 3.1 1 5 1s3.6.7 4.9 1.9L9.5 3.3C8.4 2.2 6.8 1.5 5 1.5zM5 3.5c-1.1 0-2.1.4-2.8 1.1L1.8 4.2C2.7 3.4 3.8 3 5 3s2.3.4 3.2 1.2l-.4.4C7.1 3.9 6.1 3.5 5 3.5zM6.5 6.1L5 7.5 3.5 6.1C4 5.7 4.5 5.5 5 5.5s1 .2 1.5.6z"
+                      />
+                    </svg>
+                    <div class="s-battery"><div class="s-batt-fill"></div></div>
+                  </div>
+                </div>
+
+                <!-- App content -->
+                <div class="iphone-content">
+                  <div class="sc-app-row">
+                    <div class="sc-app-icon">E</div>
+                    <span class="sc-app-name">EIXIMARA</span>
+                  </div>
+
+                  <div class="sc-heading">Welcome back</div>
+                  <div class="sc-sub">Sign in to access your dashboard</div>
+
+                  <!-- Tabs -->
+                  <div class="sc-tabs">
+                    <div class="sc-tab-pill"></div>
+                    <div class="sc-tab on">Sign in</div>
+                    <div class="sc-tab">Create account</div>
+                  </div>
+
+                  <!-- Google -->
+                  <div class="sc-google">
+                    <div class="sc-g-logo"></div>
+                    <span>Continue with Google</span>
+                  </div>
+
+                  <div class="sc-divider">
+                    <div class="sc-divider-line"></div>
+                    <span>or email</span>
+                    <div class="sc-divider-line"></div>
+                  </div>
+
+                  <!-- Email input -->
+                  <div class="sc-input email">
+                    <div class="sc-input-icon"></div>
+                    <div class="sc-input-line"></div>
+                  </div>
+
+                  <!-- Password input -->
+                  <div class="sc-input password">
+                    <div class="sc-input-icon"></div>
+                    <div class="sc-pw-dots">
+                      <div class="sc-pw-dot"></div>
+                      <div class="sc-pw-dot"></div>
+                      <div class="sc-pw-dot"></div>
+                      <div class="sc-pw-dot"></div>
+                      <div class="sc-pw-dot"></div>
+                      <div class="sc-cursor"></div>
+                    </div>
+                  </div>
+
+                  <!-- Sign in button -->
+                  <div class="sc-btn">SIGN IN →</div>
+                </div>
+              </div>
+
+              <div class="iphone-home"></div>
+            </div>
+
+            <!-- Live badge -->
+            <div class="phone-badge">
+              <div class="badge-ping"></div>
+              <span class="badge-label">EIXIMARA · Secured</span>
+            </div>
+          </div>
+          <!-- /iPhone -->
         </div>
-        
-        <!-- Social Login Container -->
-        <div class="auth__social" style="display: flex; justify-content: center; min-height: 44px;">
-          <!-- Google button will be rendered here by GSI script -->
-          <div id="google-login-btn"></div>
+        <!-- /brand-main -->
+        <div class="brand-ticker">
+          <div class="ticker-label">Trusted by builders worldwide</div>
+          <div style="overflow: hidden">
+            <div class="ticker-track">
+              <div class="ticker-item">
+                <div class="ticker-avatar">AK</div>
+                <div class="ticker-text">
+                  <strong>Aryan K.</strong> — Portfolio went live in 2 days.
+                  Absolutely stunning.
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <div class="ticker-item">
+                <div class="ticker-avatar">SM</div>
+                <div class="ticker-text">
+                  <strong>Sofia M.</strong> — Clean code, fast delivery, zero
+                  hassle.
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <div class="ticker-item">
+                <div class="ticker-avatar">JL</div>
+                <div class="ticker-text">
+                  <strong>James L.</strong> — Hired me on the spot after seeing
+                  my new portfolio.
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <div class="ticker-item">
+                <div class="ticker-avatar">PR</div>
+                <div class="ticker-text">
+                  <strong>Priya R.</strong> — The best investment for my career.
+                  Highly recommend.
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <!-- Duplicate for seamless loop -->
+              <div class="ticker-item">
+                <div class="ticker-avatar">AK</div>
+                <div class="ticker-text">
+                  <strong>Aryan K.</strong> — Portfolio went live in 2 days.
+                  Absolutely stunning.
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <div class="ticker-item">
+                <div class="ticker-avatar">SM</div>
+                <div class="ticker-text">
+                  <strong>Sofia M.</strong> — Clean code, fast delivery, zero
+                  hassle.
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <div class="ticker-item">
+                <div class="ticker-avatar">JL</div>
+                <div class="ticker-text">
+                  <strong>James L.</strong> — Hired me on the spot after seeing
+                  my new portfolio.
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <div class="ticker-item">
+                <div class="ticker-avatar">PR</div>
+                <div class="ticker-text">
+                  <strong>Priya R.</strong> — The best investment for my career.
+                  Highly recommend.
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <!-- Notice -->
-        <div class="auth__notice">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </section>
+
+      <!-- ══════════════════════════════════
+       RIGHT — AUTH FORM PANEL
+       ══════════════════════════════════ -->
+      <section class="auth-form-side" aria-label="Authentication">
+        <a href="index.html" class="form-back">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
           </svg>
-          <span>You must <a href="book.html" class="auth__link">book a slot</a> first to access the dashboard</span>
+          Back to home
+        </a>
+
+        <div class="auth-card">
+          <!-- Header -->
+          <div class="auth-card-header">
+            <h2 class="auth-card-title" id="auth-title">Welcome back</h2>
+            <p class="auth-card-subtitle" id="auth-subtitle">
+              Sign in to access your dashboard
+            </p>
+          </div>
+
+          <!-- Error notice -->
+          <div class="auth-notice hidden" id="auth-error" role="alert">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <span id="auth-error-text"></span>
+          </div>
+
+          <!-- Tabs -->
+          <div class="auth-tabs" role="tablist">
+            <button
+              class="auth-tab active"
+              role="tab"
+              aria-selected="true"
+              data-panel="panel-signin"
+            >
+              Sign in
+            </button>
+            <button
+              class="auth-tab"
+              role="tab"
+              aria-selected="false"
+              data-panel="panel-signup"
+            >
+              Create account
+            </button>
+          </div>
+
+          <!-- ─── SIGN IN PANEL ─── -->
+          <div class="auth-panel active" id="panel-signin" role="tabpanel">
+            <form id="signin-form" novalidate>
+              <!-- Google -->
+              <button type="button" class="btn-google" id="google-login-btn">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    fill="#4285F4"
+                  />
+                  <path
+                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    fill="#34A853"
+                  />
+                  <path
+                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                    fill="#FBBC05"
+                  />
+                  <path
+                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    fill="#EA4335"
+                  />
+                </svg>
+                Continue with Google
+              </button>
+
+              <div class="auth-divider">
+                <span>or continue with email</span>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="signin-email"
+                  >Email address</label
+                >
+                <div class="input-wrap">
+                  <svg
+                    class="input-icon"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                    />
+                  </svg>
+                  <input
+                    class="auth-input"
+                    type="email"
+                    id="signin-email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="signin-password"
+                  >Password</label
+                >
+                <div class="input-wrap">
+                  <svg
+                    class="input-icon"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
+                  <input
+                    class="auth-input input-with-toggle"
+                    type="password"
+                    id="signin-password"
+                    name="password"
+                    placeholder="Enter your password"
+                    autocomplete="current-password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="pw-toggle"
+                    data-target="signin-password"
+                    aria-label="Toggle password visibility"
+                  >
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      id="eye-signin"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="auth-meta">
+                <label class="auth-check">
+                  <input type="checkbox" name="remember" id="signin-remember" />
+                  <div class="check-box"></div>
+                  <span>Remember me</span>
+                </label>
+                <a href="#" class="auth-forgot">Forgot password?</a>
+              </div>
+
+              <button type="submit" class="btn-primary">
+                Sign in
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </button>
+            </form>
+
+            <p class="auth-footer-text">
+              Don't have an account?
+              <button class="auth-toggle-link" data-switch="panel-signup">
+                Create one free →
+              </button>
+            </p>
+          </div>
+
+          <!-- ─── SIGN UP PANEL ─── -->
+          <div class="auth-panel" id="panel-signup" role="tabpanel">
+            <form id="signup-form" novalidate>
+              <button type="button" class="btn-google">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                    fill="#4285F4"
+                  />
+                  <path
+                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                    fill="#34A853"
+                  />
+                  <path
+                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                    fill="#FBBC05"
+                  />
+                  <path
+                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                    fill="#EA4335"
+                  />
+                </svg>
+                Sign up with Google
+              </button>
+
+              <div class="auth-divider"><span>or sign up with email</span></div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label class="field-label" for="signup-firstname"
+                    >First name</label
+                  >
+                  <div class="input-wrap">
+                    <svg
+                      class="input-icon"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                    <input
+                      class="auth-input"
+                      type="text"
+                      id="signup-firstname"
+                      name="firstname"
+                      placeholder="Jane"
+                      autocomplete="given-name"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <label class="field-label" for="signup-lastname"
+                    >Last name</label
+                  >
+                  <div class="input-wrap">
+                    <svg
+                      class="input-icon"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                    <input
+                      class="auth-input"
+                      type="text"
+                      id="signup-lastname"
+                      name="lastname"
+                      placeholder="Doe"
+                      autocomplete="family-name"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="signup-email"
+                  >Email address</label
+                >
+                <div class="input-wrap">
+                  <svg
+                    class="input-icon"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
+                    />
+                  </svg>
+                  <input
+                    class="auth-input"
+                    type="email"
+                    id="signup-email"
+                    name="email"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="signup-password"
+                  >Password</label
+                >
+                <div class="input-wrap">
+                  <svg
+                    class="input-icon"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
+                  <input
+                    class="auth-input input-with-toggle"
+                    type="password"
+                    id="signup-password"
+                    name="password"
+                    placeholder="Min. 8 characters"
+                    autocomplete="new-password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="pw-toggle"
+                    data-target="signup-password"
+                    aria-label="Toggle password visibility"
+                  >
+                    <svg
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      id="eye-signup"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div class="pw-strength" id="pw-strength-bars">
+                  <div class="pw-bar" id="bar-1"></div>
+                  <div class="pw-bar" id="bar-2"></div>
+                  <div class="pw-bar" id="bar-3"></div>
+                  <div class="pw-bar" id="bar-4"></div>
+                </div>
+              </div>
+
+              <div class="field">
+                <label class="field-label" for="signup-confirm"
+                  >Confirm password</label
+                >
+                <div class="input-wrap">
+                  <svg
+                    class="input-icon"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                  <input
+                    class="auth-input input-with-toggle"
+                    type="password"
+                    id="signup-confirm"
+                    name="confirm"
+                    placeholder="Repeat password"
+                    autocomplete="new-password"
+                    required
+                  />
+                  <button
+                    type="button"
+                    class="pw-toggle"
+                    data-target="signup-confirm"
+                    aria-label="Toggle password visibility"
+                  >
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary">
+                Create account
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
+                </svg>
+              </button>
+
+              <p
+                style="
+                  font-size: 0.75rem;
+                  color: var(--color-text-dim);
+                  text-align: center;
+                  margin-top: 1rem;
+                  line-height: 1.5;
+                "
+              >
+                By creating an account you agree to our
+                <a href="#" style="color: var(--color-accent)"
+                  >Terms of Service</a
+                >
+                and
+                <a href="#" style="color: var(--color-accent)">Privacy Policy</a
+                >.
+              </p>
+            </form>
+
+            <p class="auth-footer-text">
+              Already have an account?
+              <button class="auth-toggle-link" data-switch="panel-signin">
+                Sign in →
+              </button>
+            </p>
+          </div>
         </div>
-      </div>
-    </main>
+        <!-- /auth-card -->
+      </section>
+    </div>
+    <!-- /auth-layout -->
 
-    <!-- Footer -->
-    <footer class="auth__footer">
-      <p class="font-mono">&copy; 2024 EIXIMARA. All rights reserved.</p>
-    </footer>
-  </div>
-
-  <!-- Scripts -->
-  <script src="js/api.js"></script>
-  <script src="main.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      'use strict';
-      
-      // Check if already logged in
-      if (API.isLoggedIn()) {
-        const user = API.getUser();
-        if (user && user.role === 'admin') {
-          window.location.href = 'admin.html';
-          return;
-        } else if (user) {
-          window.location.href = 'dashboard.html';
-          return;
-        } else {
-          // Invalid state: token exists but no user info
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        /* ─── Already logged in? ─── */
+        const token = localStorage.getItem("eiximara_token");
+        if (token) {
+          const user = JSON.parse(
+            localStorage.getItem("eiximara_user") || "null",
+          );
+          if (user) {
+            window.location.href =
+              user.role === "admin" ? "admin.html" : "dashboard.html";
+            return;
+          }
           API.clearAuth();
         }
-      }
-      
-      // Elements
-      const tabs = document.querySelectorAll('.auth__tab');
-      const signinForm = document.getElementById('signin-form');
-      const signupForm = document.getElementById('signup-form');
-      const authTitle = document.getElementById('auth-title');
-      const authSubtitle = document.getElementById('auth-subtitle');
-      const passwordToggles = document.querySelectorAll('.auth__password-toggle');
-      const googleSignin = document.getElementById('google-signin');
-      
-      // Helper: Show error message
-      function showError(message) {
-        let errorDiv = document.getElementById('inline-error');
-        if (!errorDiv) {
-          errorDiv = document.createElement('div');
-          errorDiv.id = 'inline-error';
-          errorDiv.className = 'auth__notice';
-          errorDiv.style.backgroundColor = 'rgba(234, 67, 53, 0.1)';
-          errorDiv.style.color = '#ea4335';
-          errorDiv.style.marginBottom = '1.5rem';
-          const cardHeader = document.querySelector('.auth__card-header');
-          if (cardHeader) cardHeader.insertAdjacentElement('afterend', errorDiv);
-        }
-        errorDiv.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><span>' + message + '</span>';
-      }
-      
-      // Helper: Set loading state
-      function setLoading(form, loading) {
-        const btn = form.querySelector('button[type="submit"]');
-        const inputs = form.querySelectorAll('input');
-        btn.disabled = loading;
-        inputs.forEach(function(input) { input.disabled = loading; });
-        btn.innerHTML = loading 
-          ? '<span style="opacity:0.7">Please wait...</span>'
-          : (form.id === 'signin-form' ? 'Sign in' : 'Create account') + ' <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
-      }
-      
-      // Tab switching
-      tabs.forEach(function(tab) {
-        tab.addEventListener('click', function() {
-          const targetTab = this.dataset.tab;
-          
-          // Update active tab
-          tabs.forEach(function(t) {
-            t.classList.remove('auth__tab--active');
-          });
-          this.classList.add('auth__tab--active');
-          
-          // Show/hide forms
-          if (targetTab === 'signin') {
-            signinForm.style.display = 'block';
-            signupForm.style.display = 'none';
-            authTitle.textContent = 'Welcome back';
-            authSubtitle.textContent = 'Sign in to access your dashboard';
-          } else {
-            signinForm.style.display = 'none';
-            signupForm.style.display = 'block';
-            authTitle.textContent = 'Create account';
-            authSubtitle.textContent = 'Sign up to get started with EIXIMARA';
-          }
-        });
-      });
-      
-      // Password visibility toggle
-      passwordToggles.forEach(function(toggle) {
-        toggle.addEventListener('click', function() {
-          const input = this.previousElementSibling;
-          const icon = this.querySelector('.auth__eye-icon');
-          
-          if (input.type === 'password') {
-            input.type = 'text';
-            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>';
-          } else {
-            input.type = 'password';
-            icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>';
-          }
-        });
-      });
-      
-      // Sign In Form Submit
-      signinForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const email = document.getElementById('signin-email').value;
-        const password = document.getElementById('signin-password').value;
-        
-        setLoading(signinForm, true);
-        
-        try {
-          const result = await API.login(email, password);
-          
-          // Redirect based on role
-          if (result.user.role === 'admin') {
-            window.location.href = 'admin.html';
-          } else {
-            window.location.href = 'dashboard.html';
-          }
-        } catch (error) {
-          showError(error.message);
-          setLoading(signinForm, false);
-        }
-      });
-      
-      // Sign Up Form Submit
-      signupForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const fullName = document.getElementById('signup-name').value;
-        const email = document.getElementById('signup-email').value;
-        const password = document.getElementById('signup-password').value;
-        const confirm = document.getElementById('signup-confirm').value;
-        
-        // Basic validation
-        if (password !== confirm) {
-          showError('Passwords do not match');
-          return;
-        }
-        
-        if (password.length < 8) {
-          showError('Password must be at least 8 characters');
-          return;
-        }
-        
-        // Parse name
-        const nameParts = fullName.trim().split(' ');
-        const firstName = nameParts[0] || '';
-        const lastName = nameParts.slice(1).join(' ') || firstName; // Fallback so server never receives empty string
-        
-        if (!firstName) {
-          showError('Please enter your full name');
-          return;
-        }
-        
-        setLoading(signupForm, true);
-        
-        try {
-          await API.register(email, password, firstName, lastName);
-          window.location.href = 'dashboard.html';
-        } catch (error) {
-          showError(error.message);
-          setLoading(signupForm, false);
-        }
-      });
-      
-      // Google Identity Services setup
-      window.handleGoogleCredentialResponse = async function(response) {
-        showError(''); // Clear any previous errors
-        try {
-          const result = await API.googleLogin(response.credential);
-          if (result.user.role === 'admin') {
-            window.location.href = 'admin.html';
-          } else {
-            window.location.href = 'dashboard.html';
-          }
-        } catch (error) {
-          showError(error.message || 'Google authentication failed');
-        }
-      };
 
-      // Wait for the GSI library to load if it hasn't already
-      const initGoogleAuth = setInterval(() => {
-        if (window.google && window.google.accounts) {
-          clearInterval(initGoogleAuth);
-          
-          google.accounts.id.initialize({
-            client_id: "558294499174-ph1gfr2nepnd4p1vvip0jaorhkb6c3on.apps.googleusercontent.com",
-            callback: handleGoogleCredentialResponse,
-            auto_select: false
+        /* ─── Elements ─── */
+        const tabs = document.querySelectorAll(".auth-tab");
+        const panels = document.querySelectorAll(".auth-panel");
+        const errorBox = document.getElementById("auth-error");
+        const errorText = document.getElementById("auth-error-text");
+        const titleEl = document.getElementById("auth-title");
+        const subtitleEl = document.getElementById("auth-subtitle");
+
+        /* ─── Helpers ─── */
+        function showError(msg) {
+          errorText.textContent = msg;
+          errorBox.classList.remove("hidden");
+          errorBox.scrollIntoView({ block: "nearest", behavior: "smooth" });
+        }
+        function clearError() {
+          errorBox.classList.add("hidden");
+        }
+
+        function setLoading(btn, loading, label) {
+          btn.disabled = loading;
+          btn.innerHTML = loading
+            ? '<span style="opacity:.7">Please wait…</span>'
+            : label +
+              '<svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>';
+        }
+
+        /* ─── Tab switching ─── */
+        function switchTo(panelId) {
+          clearError();
+          tabs.forEach((t) => {
+            const active = t.dataset.panel === panelId;
+            t.classList.toggle("active", active);
+            t.setAttribute("aria-selected", active);
           });
-          
-          const btnContainer = document.getElementById("google-login-btn");
-          if (btnContainer) {
-            google.accounts.id.renderButton(
-              btnContainer,
-              { theme: "outline", size: "large", type: "standard", shape: "pill", width: 400, text: "continue_with" }
-            );
+          panels.forEach((p) => p.classList.toggle("active", p.id === panelId));
+          if (panelId === "panel-signin") {
+            titleEl.textContent = "Welcome back";
+            subtitleEl.textContent = "Sign in to access your dashboard";
+          } else {
+            titleEl.textContent = "Create your account";
+            subtitleEl.textContent = "Join EIXIMARA and start building today";
           }
         }
-      }, 100);
-    });
-  </script>
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
-</body>
+
+        tabs.forEach((t) =>
+          t.addEventListener("click", () => switchTo(t.dataset.panel)),
+        );
+        document
+          .querySelectorAll(".auth-toggle-link")
+          .forEach((btn) =>
+            btn.addEventListener("click", () => switchTo(btn.dataset.switch)),
+          );
+
+        /* ─── Password visibility ─── */
+        document.querySelectorAll(".pw-toggle").forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const input = document.getElementById(this.dataset.target);
+            if (!input) return;
+            const show = input.type === "password";
+            input.type = show ? "text" : "password";
+            const svg = this.querySelector("svg");
+            svg.innerHTML = show
+              ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>'
+              : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>';
+          });
+        });
+
+        /* ─── Password strength meter ─── */
+        const pwInput = document.getElementById("signup-password");
+        const bars = [1, 2, 3, 4].map((i) =>
+          document.getElementById("bar-" + i),
+        );
+        const levels = ["", "weak", "fair", "good", "strong"];
+
+        function scorePassword(pw) {
+          if (!pw) return 0;
+          let s = 0;
+          if (pw.length >= 8) s++;
+          if (pw.length >= 12) s++;
+          if (/[A-Z]/.test(pw) && /[a-z]/.test(pw)) s++;
+          if (/[^A-Za-z0-9]/.test(pw) || /\d/.test(pw)) s++;
+          return Math.min(s, 4);
+        }
+
+        if (pwInput) {
+          pwInput.addEventListener("input", function () {
+            const score = scorePassword(this.value);
+            bars.forEach((b, i) => {
+              b.className = "pw-bar";
+              if (i < score) b.classList.add(levels[score]);
+            });
+          });
+        }
+
+        /* ─── Sign In ─── */
+        const signinForm = document.getElementById("signin-form");
+        signinForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          clearError();
+          const email = document.getElementById("signin-email").value.trim();
+          const password = document.getElementById("signin-password").value;
+          const btn = this.querySelector('button[type="submit"]');
+          setLoading(btn, true, "Sign in");
+          try {
+            const r = await API.login(email, password);
+            window.location.href =
+              r.user.role === "admin" ? "admin.html" : "dashboard.html";
+          } catch (err) {
+            showError(err.message);
+            setLoading(btn, false, "Sign in");
+          }
+        });
+
+        /* ─── Sign Up ─── */
+        const signupForm = document.getElementById("signup-form");
+        signupForm.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          clearError();
+          const firstName = document
+            .getElementById("signup-firstname")
+            .value.trim();
+          const lastName = document
+            .getElementById("signup-lastname")
+            .value.trim();
+          const email = document.getElementById("signup-email").value.trim();
+          const password = document.getElementById("signup-password").value;
+          const confirm = document.getElementById("signup-confirm").value;
+          const btn = this.querySelector('button[type="submit"]');
+
+          if (!firstName) {
+            showError("Please enter your first name.");
+            return;
+          }
+          if (password !== confirm) {
+            showError("Passwords do not match.");
+            return;
+          }
+          if (password.length < 8) {
+            showError("Password must be at least 8 characters.");
+            return;
+          }
+
+          setLoading(btn, true, "Create account");
+          try {
+            await API.register(email, password, firstName, lastName);
+            window.location.href = "dashboard.html";
+          } catch (err) {
+            showError(err.message);
+            setLoading(btn, false, "Create account");
+          }
+        });
+
+        /* ─── Google Identity Services ─── */
+        window.handleGoogleCredentialResponse = async function (response) {
+          clearError();
+          try {
+            if (!response.credential) {
+              console.warn("Google identification callback fired without credential.");
+              return;
+            }
+            const r = await API.googleLogin(response.credential);
+            window.location.href =
+              r.user.role === "admin" ? "admin.html" : "dashboard.html";
+          } catch (err) {
+            showError(err.message || "Google authentication failed.");
+          }
+        };
+
+        const gsiPoll = setInterval(() => {
+          if (window.google && window.google.accounts) {
+            clearInterval(gsiPoll);
+            google.accounts.id.initialize({
+              client_id:
+                "558294499174-ph1gfr2nepnd4p1vvip0jaorhkb6c3on.apps.googleusercontent.com",
+              callback: handleGoogleCredentialResponse,
+              auto_select: false,
+            });
+            const container = document.getElementById("google-login-btn");
+            if (container) {
+              google.accounts.id.renderButton(container, {
+                theme: "outline",
+                size: "large",
+                shape: "pill",
+                width: 400,
+                text: "continue_with",
+              });
+            }
+          }
+        }, 100);
+      });
+    </script>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+  </body>
 </html>

@@ -4,6 +4,14 @@ const path = require('path');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 
+// Debugging: Catch global errors
+process.on('uncaughtException', (err) => {
+  console.error('FATAL ERROR: Uncaught Exception:', err);
+});
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('FATAL ERROR: Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
 // Import routes
 const authRoutes = require('./routes/auth');
 const projectRoutes = require('./routes/projects');
@@ -26,7 +34,7 @@ app.use(helmet({
 // Rate limiting - prevent brute force attacks
 const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 10, // 10 attempts per window
+  max: 100, // Increased for debugging/development
   message: { error: 'Too many login attempts. Please try again in 15 minutes.' },
   standardHeaders: true,
   legacyHeaders: false

@@ -664,10 +664,10 @@ function initPricingSection() {
   if (!projectBtns.length || !tierBtns.length) return;
   
   const projectTypes = [
-    { name: 'Portfolio Website', basePrice: 299 },
-    { name: 'Landing Page', basePrice: 199 },
-    { name: 'Custom Web App', basePrice: 999 },
-    { name: 'E-commerce Site', basePrice: 799 }
+    { name: 'Portfolio Website', basePrice: 24999 },
+    { name: 'Landing Page', basePrice: 16499 },
+    { name: 'Custom Web App', basePrice: 79999 },
+    { name: 'E-commerce Site', basePrice: 64999 }
   ];
   
   const deliveryTiers = [
@@ -698,7 +698,7 @@ function initPricingSection() {
       const priceEl = tier.querySelector('.pricing__tier-amount');
       if (priceEl) {
         const price = Math.round(basePrice * deliveryTiers[i].multiplier);
-        priceEl.textContent = '$' + price;
+        priceEl.textContent = '₹' + price.toLocaleString();
       }
     });
     
@@ -712,7 +712,7 @@ function initPricingSection() {
     }
     
     if (summaryTotal) {
-      summaryTotal.innerHTML = '<span class="text-gradient">$' + finalPrice + '</span>';
+      summaryTotal.innerHTML = '<span class="text-gradient">₹' + finalPrice.toLocaleString() + '</span>';
     }
   }
   

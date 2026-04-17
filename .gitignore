@@ -25,3 +25,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# database
+backend/eiximara.db
+backend/eiximara.db-journal
+backend/eiximara.db-shm
+backend/eiximara.db-wal

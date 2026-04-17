@@ -5,7 +5,7 @@
 
 const API = {
   // Base URL - change this if your backend runs on a different port/host
-  BASE_URL: 'http://localhost:3001/api',
+  BASE_URL: '/api',
 
   // Get stored auth token
   getToken() {
@@ -44,6 +44,7 @@ const API = {
   // Make API request
   async request(endpoint, options = {}) {
     const url = `${this.BASE_URL}${endpoint}`;
+    console.log(`[API] Request: ${options.method || "GET"} ${url}`);
     const token = this.getToken();
 
     const config = {
